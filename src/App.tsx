@@ -1,13 +1,12 @@
 import React from 'react';
 import * as Layout from 'Views/Layout';
-import * as Pages from 'Views/Pages';
-import 'App.scss';
+import MainRouter from 'Routes/MainRouter';
 
 const App: React.FC = () => (
   <>
     <Layout.Header />
     <Layout.Main>
-      <Pages.Main />
+      <MainRouter />
     </Layout.Main>
     <Layout.Footer />
   </>

@@ -7,7 +7,7 @@ import Code from 'Views/Components/Text/Code';
 import logo from 'logo.svg';
 import 'App.scss';
 
-export const Main: React.FC = () => (
+const Main: React.FC = () => (
   <Div className="App">
     <Div className="App-header">
       <Image src={logo} className="App-logo" alt="logo" />
@@ -25,3 +25,5 @@ export const Main: React.FC = () => (
     </Div>
   </Div>
 );
+
+export default Main;
