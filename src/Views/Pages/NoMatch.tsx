@@ -1,7 +1,7 @@
 import React from 'react';
 import Div from 'Views/Components/Div';
 import P from 'Views/Components/Text/Paragraph';
-import 'App.scss';
+import 'Styles/App.scss';
 
 const NoMatch: React.FC = () => (
   <Div className="App">
