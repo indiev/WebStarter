@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["react-app", "airbnb", "prettier"],
+  "extends": ["react-app", "airbnb", "prettier" /* , "prettier/react" */],
   "plugins": ["react-hooks", "prettier"],
   "rules": {
     "react/prefer-stateless-function": "off",
@@ -14,13 +14,29 @@
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "as-needed"],
     "no-underscore-dangle": "off",
-    "consistent-return": "off",
     "quotes": [
-      "error",
+      2,
       "single",
-      { "avoidEscape": true, "allowTemplateLiterals": false }
+      { "avoidEscape": true, "allowTemplateLiterals": true }
     ],
-    "prettier/prettier": "warn"
+    "indent": ["error", 2],
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "printWidth": 80
+      }
+    ]
   },
   "env": {
     "browser": true
