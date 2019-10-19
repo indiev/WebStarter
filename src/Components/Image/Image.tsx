@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface Props {
-  src?: string;
-  className?: string;
-  alt: string;
-}
+export interface Props
+  extends React.DetailedHTMLProps<
+    React.ImgHTMLAttributes<HTMLImageElement>,
+    HTMLImageElement
+  > {}
 
 const Image: React.FC<Props> = ({ alt, ...props }: Props) => (
   <img alt={alt} {...props} />

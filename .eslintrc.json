@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["react-app", "airbnb", "prettier" /* , "prettier/react" */],
+  "extends": ["react-app", "airbnb", "prettier"],
   "plugins": ["react-hooks", "prettier"],
   "rules": {
     "react/prefer-stateless-function": "off",
@@ -9,6 +9,7 @@
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/button-has-type": "off",
     "import/prefer-default-export": "off",
     "no-return-await": "off",
     "comma-dangle": ["error", "never"],

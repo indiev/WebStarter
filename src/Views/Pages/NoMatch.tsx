@@ -1,6 +1,6 @@
 import React from 'react';
-import Div from 'Views/Components/Div';
-import P from 'Views/Components/Text/Paragraph';
+import Div from 'Components/View/Div';
+import P from 'Components/Text/Paragraph';
 import 'Styles/App.scss';
 
 const NoMatch: React.FC = () => (

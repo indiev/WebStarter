@@ -1,8 +1,10 @@
 import React from 'react';
 
-interface Props {
-  children?: React.ReactNode;
-}
+export interface Props
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLElement>,
+    HTMLElement
+  > {}
 
 const Code: React.FC<Props> = (props: Props) => <code {...props} />;
 
