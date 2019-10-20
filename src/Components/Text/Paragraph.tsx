@@ -6,6 +6,4 @@ export interface Props
     HTMLParagraphElement
   > {}
 
-const Paragraph: React.FC<Props> = (props: Props) => <p {...props} />;
-
-export default Paragraph;
+export default (props: Props) => <p {...props} />;

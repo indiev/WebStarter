@@ -6,8 +6,4 @@ export interface Props
     HTMLAnchorElement
   > {}
 
-const Anchor: React.FC<Props> = ({ children, ...props }: Props) => (
-  <a {...props}>{children}</a>
-);
-
-export default Anchor;
+export default ({ children, ...props }: Props) => <a {...props}>{children}</a>;

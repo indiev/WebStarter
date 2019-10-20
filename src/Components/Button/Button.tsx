@@ -6,8 +6,14 @@ export interface Props
     HTMLButtonElement
   > {}
 
-const Button: React.FC<Props> = ({ type = 'button', ...props }: Props) => (
-  <button type={type} {...props} />
-);
-
-export default Button;
+export default ({ type = 'button', style, ...props }: Props) => {
+  const styles = {
+    cursor: 'pointer',
+    display: 'inline-flex',
+    backgroundColor: 'unset',
+    border: 'none',
+    outline: 'none',
+    ...style
+  };
+  return <button type={type} style={styles} {...props} />;
+};

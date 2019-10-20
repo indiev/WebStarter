@@ -6,6 +6,4 @@ export interface Props
     HTMLElement
   > {}
 
-const Code: React.FC<Props> = (props: Props) => <code {...props} />;
-
-export default Code;
+export default (props: Props) => <code {...props} />;

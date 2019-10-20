@@ -6,6 +6,4 @@ export interface Props
     HTMLDivElement
   > {}
 
-const Div: React.FC<Props> = props => <div {...props} />;
-
-export default Div;
+export default (props: Props) => <div {...props} />;

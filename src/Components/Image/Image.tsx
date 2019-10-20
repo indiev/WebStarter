@@ -6,8 +6,4 @@ export interface Props
     HTMLImageElement
   > {}
 
-const Image: React.FC<Props> = ({ alt, ...props }: Props) => (
-  <img alt={alt} {...props} />
-);
-
-export default Image;
+export default ({ alt, ...props }: Props) => <img alt={alt} {...props} />;

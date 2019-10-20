@@ -32,7 +32,7 @@ const defaultStyles: React.CSSProperties = {
   display: 'flex'
 };
 
-const FlexView: React.FC<Props> = ({
+export default ({
   style,
   row,
   content,
@@ -56,5 +56,3 @@ const FlexView: React.FC<Props> = ({
   };
   return <Div style={styles} {...props} />;
 };
-
-export default FlexView;

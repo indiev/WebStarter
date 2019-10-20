@@ -5,12 +5,10 @@ export interface Props extends FlexViewProps {}
 
 const styles: React.CSSProperties = {
   minHeight: '100vh',
-  backgroundColor: '#282c34',
-  color: 'white',
   fontSize: 'calc(10px + 2vmin)'
 };
 
-const Container: React.FC<Props> = ({ style, ...props }: Props) => (
+export default ({ style, ...props }: Props) => (
   <FlexView
     fill
     content="center"
@@ -19,5 +17,3 @@ const Container: React.FC<Props> = ({ style, ...props }: Props) => (
     {...props}
   />
 );
-
-export default Container;
