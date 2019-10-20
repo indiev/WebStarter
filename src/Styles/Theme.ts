@@ -1,3 +1,5 @@
+import Emotion from '@emotion/core';
+
 const Grays = {
   G100: '#f8f9fa',
   G200: '#e9ecef',
@@ -16,6 +18,7 @@ const BasicColors = {
   GrayLight: Grays.G100,
   Gray: Grays.G600,
   GrayDark: Grays.G800,
+  Dark: Grays.G900,
   Blue: '#007bff',
   Indigo: '#6610f2',
   Purple: '#6f42c1',
@@ -37,7 +40,7 @@ export const Colors = {
   Warning: BasicColors.Yellow,
   Info: BasicColors.Cyan,
   Light: BasicColors.GrayLight,
-  Dark: BasicColors.GrayDark
+  Dark: BasicColors.Dark
 };
 
 export const Size = {
@@ -48,7 +51,7 @@ export const Size = {
   xl: 1200
 };
 
-export const cssVars = {
+const cssVars: Emotion.CSSObject = {
   '--blue': Colors.Blue,
   '--indigo': Colors.Indigo,
   '--purple': Colors.Purple,
@@ -70,6 +73,8 @@ export const cssVars = {
   '--danger': Colors.Danger,
   '--light': Colors.Light,
   '--dark': Colors.Dark,
+  '--text': Colors.White,
+  '--fill': Colors.White,
   '--breakpoint-xs': `${Size.xs}px`,
   '--breakpoint-sm': `${Size.sm}px`,
   '--breakpoint-md': `${Size.md}px`,
@@ -79,6 +84,6 @@ export const cssVars = {
   '--font-family-monospace:': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 };
 
-export const root = {
+export const rootStyles: Emotion.CSSObject = {
   ':root': cssVars
 };

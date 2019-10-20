@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import * as Routes from './MainRoutes';
 
-const MainRouter: React.FC = () => (
+export default () => (
   <Router>
     <Switch>
       {Object.entries(Routes).map(([key, value]) => (
@@ -12,5 +12,3 @@ const MainRouter: React.FC = () => (
     </Switch>
   </Router>
 );
-
-export default MainRouter;

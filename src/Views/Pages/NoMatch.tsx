@@ -1,14 +1,9 @@
 import React from 'react';
-import Div from 'Components/View/Div';
+import Container from 'Components/View/Container';
 import P from 'Components/Text/Paragraph';
-import 'Styles/App.scss';
 
-const NoMatch: React.FC = () => (
-  <Div className="App">
-    <Div className="App-header">
-      <P>Not Found Page</P>
-    </Div>
-  </Div>
+export default () => (
+  <Container>
+    <P>Not Found Page</P>
+  </Container>
 );
-
-export default NoMatch;

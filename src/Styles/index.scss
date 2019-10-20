@@ -1,7 +1,11 @@
 @import-normalize;
 
 body {
+  background-color: var(--dark);
   margin: 0;
+  font-family: var(--font-family-sans-serif);
+  color: var(--text);
+  fill: var(--fill);
 }
 
 a {

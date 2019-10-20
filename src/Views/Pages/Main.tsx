@@ -1,7 +1,4 @@
 import React from 'react';
-import Container from 'Views/Components/View/Container';
-import 'Styles/App.scss';
+import Container from 'Components/View/Container';
 
-const Main: React.FC = () => <Container>Main</Container>;
-
-export default Main;
+export default () => <Container>Main</Container>;
