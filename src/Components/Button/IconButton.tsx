@@ -2,9 +2,9 @@ import React from 'react';
 import Icon from 'Components/Icon/Icon';
 import Button, { Props as ButtonProps } from './Button';
 
-interface Props extends ButtonProps {
+export type Props = ButtonProps & {
   name: string;
-}
+};
 
 export default ({ name, style, ...props }: Props) => {
   const styles = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import FlexView, { Props as FlexViewProps } from './FlexView';
 
-export interface Props extends FlexViewProps {}
+export type Props = FlexViewProps;
 
 const styles: React.CSSProperties = {
   minHeight: '100vh',

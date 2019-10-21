@@ -1,7 +1,7 @@
 import React from 'react';
 import Div, { Props as DivProps } from './Div';
 
-export interface Props extends DivProps {
+export type Props = DivProps & {
   row?: boolean;
   fill?: boolean;
   content?:
@@ -16,7 +16,7 @@ export interface Props extends DivProps {
   grow?: number;
   shrink?: number;
   wrap?: boolean;
-}
+};
 
 const justifyContents = {
   start: 'start',

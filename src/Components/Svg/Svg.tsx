@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface Props extends React.SVGProps<SVGSVGElement> {}
+export type Props = React.SVGProps<SVGSVGElement>;
 
 const DEAFAULT_VIEW_BOX_SIZE = 24;
 

@@ -1,10 +1,9 @@
 import React from 'react';
 
-export interface Props
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {}
+export type Props = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
 export default ({ type = 'button', style, ...props }: Props) => {
   const styles = {

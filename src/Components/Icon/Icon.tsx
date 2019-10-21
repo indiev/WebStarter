@@ -1,15 +1,14 @@
 import React from 'react';
 import * as Icons from 'Assets/Images/Icons';
 
-interface Props
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLSpanElement>,
-    HTMLSpanElement
-  > {
+export type Props = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLSpanElement>,
+  HTMLSpanElement
+> & {
   name: string;
   color?: string;
   size?: number;
-}
+};
 
 const IconMap: { [key: string]: React.FC } = {
   ...Icons

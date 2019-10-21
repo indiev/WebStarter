@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const Navbar: React.FC = () => (
+const Navbar = () => (
   <nav
     style={{
       position: 'fixed',
