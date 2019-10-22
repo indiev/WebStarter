@@ -4,8 +4,7 @@ import FlexView, { Props as FlexViewProps } from './FlexView';
 export type Props = FlexViewProps;
 
 const styles: React.CSSProperties = {
-  minHeight: '100vh',
-  fontSize: 'calc(10px + 2vmin)'
+  minHeight: '100vh'
 };
 
 export default ({ style, ...props }: Props) => (

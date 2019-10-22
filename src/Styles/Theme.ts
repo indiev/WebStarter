@@ -43,7 +43,17 @@ export const Colors = {
   Dark: BasicColors.Dark
 };
 
-export const Size = {
+export const FontSizes = {
+  xxSmall: '0.6rem',
+  xSmall: '0.75rem',
+  small: '0.85rem',
+  medium: '1rem',
+  large: '1.25rem',
+  xLarge: '1.5rem',
+  xxLarge: '2rem'
+};
+
+export const Sizes = {
   xs: 0,
   sm: 576,
   md: 768,
@@ -77,12 +87,20 @@ const cssVars: Emotion.CSSObject = {
   '--text-light': Colors.Gray,
   '--text-dark': Colors.GrayDark,
   '--fill': Colors.White,
-  '--breakpoint-xs': `${Size.xs}px`,
-  '--breakpoint-sm': `${Size.sm}px`,
-  '--breakpoint-md': `${Size.md}px`,
-  '--breakpoint-lg': `${Size.lg}px`,
-  '--breakpoint-xl': `${Size.xl}px`,
-  '--font-family-sans-serif': `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+  '--breakpoint-xs': `${Sizes.xs}px`,
+  '--breakpoint-sm': `${Sizes.sm}px`,
+  '--breakpoint-md': `${Sizes.md}px`,
+  '--breakpoint-lg': `${Sizes.lg}px`,
+  '--breakpoint-xl': `${Sizes.xl}px`,
+  '--font-size-xx-small': FontSizes.xxSmall,
+  '--font-size-x-small': FontSizes.xSmall,
+  '--font-size-small': FontSizes.small,
+  '--font-size-medium': FontSizes.medium,
+  '--font-size-large': FontSizes.large,
+  '--font-size-x-large': FontSizes.xLarge,
+  '--font-size-xx-large': FontSizes.xxLarge,
+  '--font-default-size': 'calc(10px + 0.3vw)',
+  '--font-family-sans-serif': `Noto Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   '--font-family-monospace:': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 };
 
