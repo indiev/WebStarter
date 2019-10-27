@@ -1,6 +1,5 @@
 import React from 'react';
-/** @jsx jsx */
-import Emotoin, { jsx } from '@emotion/core';
+import Emotoin from '@emotion/core';
 
 export type Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLSpanElement>,
@@ -60,7 +59,7 @@ export default ({
   bold,
   ...props
 }: Props) => {
-  const styles = {
+  const css = {
     ...SizeStyle[
       size ||
         (xxSmall && 'xx-small') ||
@@ -74,5 +73,5 @@ export default ({
     ...WeightStyle[weight || (thin && 'thin') || (bold && 'bold') || 'regular']
   };
 
-  return <span css={styles} {...props} />;
+  return <span css={css} {...props} />;
 };

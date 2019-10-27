@@ -1,4 +1,5 @@
 import React from 'react';
+import Emotoin from '@emotion/core';
 import * as Icons from 'Assets/Images/Icons';
 
 export type Props = React.DetailedHTMLProps<
@@ -14,17 +15,20 @@ const IconMap: { [key: string]: React.FC } = {
   ...Icons
 };
 
-export default ({ name, color, size, style, ...props }: Props) => {
+const defaultCSS: Emotoin.CSSObject = {
+  display: 'inline-flex'
+};
+
+export default ({ name, color, size, ...props }: Props) => {
   const RenderIcon = IconMap[name];
-  const styles: React.CSSProperties = {
-    display: 'inline-flex',
+  const css: Emotoin.CSSObject = {
+    ...defaultCSS,
     height: size || 24,
-    ...(color && { fill: color }),
-    ...style
+    ...(color && { fill: color })
   };
 
   return (
-    <span style={styles} {...props}>
+    <span css={css} {...props}>
       <RenderIcon />
     </span>
   );

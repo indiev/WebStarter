@@ -1,4 +1,5 @@
 import React from 'react';
+import Emotoin from '@emotion/core';
 import Div, { Props as DivProps } from './Div';
 
 export type Props = DivProps & {
@@ -16,6 +17,7 @@ export type Props = DivProps & {
   grow?: number;
   shrink?: number;
   wrap?: boolean;
+  center?: boolean;
 };
 
 const justifyContents = {
@@ -28,12 +30,18 @@ const justifyContents = {
   stretch: 'stretch'
 };
 
-const defaultStyles: React.CSSProperties = {
+const alignItems = {
+  start: 'start',
+  end: 'end',
+  center: 'center',
+  stretch: 'stretch'
+};
+
+const defaultCSS: Emotoin.CSSObject = {
   display: 'flex'
 };
 
 export default ({
-  style,
   row,
   content,
   items,
@@ -41,18 +49,22 @@ export default ({
   grow,
   shrink,
   wrap,
+  center,
   ...props
 }: Props) => {
-  const styles: React.CSSProperties = {
-    ...defaultStyles,
+  const css: Emotoin.CSSObject = {
+    ...defaultCSS,
     ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
+    ...(center && {
+      justifyContent: justifyContents.center,
+      alignItems: alignItems.center
+    }),
     ...(content && { justifyContent: justifyContents[content] }),
     ...(items && { alignItems: items }),
-    ...(fill && { flex: '1 1 auto' }),
+    ...(fill && { flex: 1 }),
     ...(grow && { flexGrow: grow }),
     ...(shrink && { flexShrink: shrink }),
-    ...(wrap && { flexWrap: 'wrap' }),
-    ...style
+    ...(wrap && { flexWrap: 'wrap' })
   };
-  return <Div style={styles} {...props} />;
+  return <Div css={css} {...props} />;
 };

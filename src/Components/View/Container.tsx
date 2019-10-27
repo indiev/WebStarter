@@ -1,18 +1,13 @@
 import React from 'react';
+import Emotoin from '@emotion/core';
 import FlexView, { Props as FlexViewProps } from './FlexView';
 
 export type Props = FlexViewProps;
 
-const styles: React.CSSProperties = {
+const css: Emotoin.CSSObject = {
   minHeight: '100vh'
 };
 
-export default ({ style, ...props }: Props) => (
-  <FlexView
-    fill
-    content="center"
-    items="center"
-    style={{ ...styles, ...style }}
-    {...props}
-  />
+export default (props: Props) => (
+  <FlexView fill content="center" items="center" css={css} {...props} />
 );
