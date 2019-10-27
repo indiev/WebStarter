@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["react-app", "airbnb", "prettier"],
+  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
   "plugins": ["react-hooks", "prettier"],
   "rules": {
     "react/prefer-stateless-function": "off",
@@ -36,7 +36,8 @@
       {
         "singleQuote": true,
         "printWidth": 80
-      }
+      },
+      { "usePrettierrc": false }
     ]
   },
   "env": {
