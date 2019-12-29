@@ -25,10 +25,10 @@ const Navbar = () => (
   <FlexView row content="between" items="center" css={css}>
     <Logo />
     <FlexView row grow={1} center>
-      <NavLink to="/signup">
+      <NavLink to="/signup" css={{ padding: '0 5px' }}>
         <Text bold>Sign Up</Text>
       </NavLink>
-      <NavLink to="/signin">
+      <NavLink to="/signin" css={{ padding: '0 5px' }}>
         <Text bold>Sign In</Text>
       </NavLink>
     </FlexView>
