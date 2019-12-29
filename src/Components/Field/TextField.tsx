@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState } from 'react';
 import Emotion from '@emotion/core';
 import FlexView from 'Components/View/FlexView';
 import Input from './Input';
@@ -11,7 +11,7 @@ export type Props = React.DetailedHTMLProps<
   label?: boolean;
 };
 
-export default forwardRef<HTMLInputElement, Props>(
+export default React.forwardRef(
   (
     {
       type = 'text',
@@ -22,9 +22,8 @@ export default forwardRef<HTMLInputElement, Props>(
       value: propValue,
       ...props
     }: Props,
-    ref
+    ref: any
   ) => {
-    const [value, setValue] = useState(propValue);
     const [isFocus, setIsFoucs] = useState(false);
 
     const viewCSS: Emotion.CSSObject = {
@@ -43,21 +42,20 @@ export default forwardRef<HTMLInputElement, Props>(
       // borderRadius: '0.3vw'
     };
 
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
-    };
-
     return (
       <FlexView row={row} css={viewCSS} style={style}>
-        {label && <span css={labelCSS}>{name}</span>}
+        {label && name && (
+          <label htmlFor={name} css={labelCSS}>
+            {`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+          </label>
+        )}
         <Input
           type={type}
           css={inputCSS}
-          value={value}
-          innerRef={ref}
-          onChange={onChange}
+          name={name}
           onFocus={() => setIsFoucs(true)}
           onBlur={() => setIsFoucs(false)}
+          ref={ref}
           {...props}
         />
       </FlexView>
