@@ -1,13 +1,23 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import FlexView from 'Components/View/FlexView';
 import Container from 'Components/View/Container';
 import TextField from 'Components/Field/TextField';
 import Button from 'Components/Button/Button';
 import Text from 'Components/Text/Text';
+import Form from 'Components/Form/Form';
+
+type FormData = {
+  username: string;
+  password: string;
+};
 
 export default () => {
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const { register, handleSubmit } = useForm<FormData>({ mode: 'onChange' });
+
+  const onSumbit = (data: FormData) => {
+    console.log(data);
+  };
 
   return (
     <Container>
@@ -15,32 +25,36 @@ export default () => {
         Sign Up
       </Text>
       <FlexView style={{ padding: 15, width: 300 }}>
-        <TextField
-          name="Username"
-          label
-          placeholder="Please enter your username"
-          ref={usernameRef}
-        />
-        <TextField
-          style={{ marginTop: 10 }}
-          type="password"
-          name="Password"
-          label
-          placeholder="Please enter your password"
-          ref={passwordRef}
-        />
-        <Button
-          css={{
-            padding: 12,
-            marginTop: 15,
-            backgroundColor: 'var(--primary)'
-          }}
-          onClick={() => alert(usernameRef.current!.value || '')}
-        >
-          <Text large bold>
-            Sign Up
-          </Text>
-        </Button>
+        <Form onSubmit={handleSubmit(onSumbit)}>
+          <TextField
+            name="username"
+            label
+            placeholder="Please enter your username"
+            autoComplete="username"
+            ref={register({ required: true })}
+          />
+          <TextField
+            style={{ marginTop: 10 }}
+            type="password"
+            name="password"
+            label
+            placeholder="Please enter your password"
+            autoComplete="new-password"
+            ref={register({ required: true })}
+          />
+          <Button
+            type="submit"
+            css={{
+              padding: 12,
+              marginTop: 15,
+              backgroundColor: 'var(--primary)'
+            }}
+          >
+            <Text large bold>
+              Sign Up
+            </Text>
+          </Button>
+        </Form>
       </FlexView>
     </Container>
   );
