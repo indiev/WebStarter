@@ -1,5 +1,5 @@
-import React from 'react';
 import Emotoin from '@emotion/core';
+import React from 'react';
 
 export type Props = React.SVGProps<SVGSVGElement>;
 
@@ -12,11 +12,11 @@ const css: Emotoin.CSSObject = {
 
 export default ({ width, height, ...props }: Props) => (
   <svg
-    viewBox={`0 0 ${width || DEAFAULT_VIEW_BOX_SIZE} ${height ||
-      DEAFAULT_VIEW_BOX_SIZE}`}
+    css={css}
     focusable="false"
     pointerEvents="none"
-    css={css}
+    viewBox={`0 0 ${width || DEAFAULT_VIEW_BOX_SIZE} ${height ||
+      DEAFAULT_VIEW_BOX_SIZE}`}
     {...props}
   />
 );
