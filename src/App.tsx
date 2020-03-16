@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as Layout from 'Views/Layout';
 
 export default () => (

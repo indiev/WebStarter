@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import FlexView from 'Components/View/FlexView';
-import Container from 'Components/View/Container';
-import TextField from 'Components/Field/TextField';
+
 import Button from 'Components/Button/Button';
-import Text from 'Components/Text/Text';
+import TextField from 'Components/Field/TextField';
 import Form from 'Components/Form/Form';
+import Text from 'Components/Text/Text';
+import Container from 'Components/View/Container';
+import FlexView from 'Components/View/FlexView';
 
 type FormData = {
   username: string;
@@ -21,34 +22,34 @@ export default () => {
 
   return (
     <Container>
-      <Text xLarge bold>
+      <Text bold xLarge>
         Sign In
       </Text>
       <FlexView style={{ padding: 15, width: 300 }}>
         <Form onSubmit={handleSubmit(onSumbit)}>
           <TextField
-            name="username"
-            label
-            placeholder="Please enter your username"
             ref={register({ required: true })}
+            name="username"
+            placeholder="Please enter your username"
+            label
           />
           <TextField
+            ref={register({ required: true })}
+            name="password"
+            placeholder="Please enter your password"
             style={{ marginTop: 10 }}
             type="password"
-            name="password"
             label
-            placeholder="Please enter your password"
-            ref={register({ required: true })}
           />
           <Button
-            type="submit"
             css={{
               padding: 12,
               marginTop: 15,
               backgroundColor: 'var(--primary)'
             }}
+            type="submit"
           >
-            <Text large bold>
+            <Text bold large>
               Sign In
             </Text>
           </Button>

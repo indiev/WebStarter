@@ -1,11 +1,11 @@
-import React from 'react';
 import { Global } from '@emotion/core';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { rootStyles } from 'Styles/Theme';
+import FooterRouter from 'Routes/Footer/FooterRouter';
 import HeaderRouter from 'Routes/Header/HeaderRouter';
 import MainRouter from 'Routes/Main/MainRouter';
-import FooterRouter from 'Routes/Footer/FooterRouter';
+import { rootStyles } from 'Styles/Theme';
 
 export type Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLElement>,

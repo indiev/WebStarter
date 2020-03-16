@@ -1,5 +1,5 @@
-import React from 'react';
 import Emotion from '@emotion/core';
+import React from 'react';
 
 export type Props = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -17,6 +17,6 @@ const css: Emotion.CSSObject = {
 
 export default React.forwardRef(
   (props: Props, ref: React.Ref<HTMLInputElement>) => (
-    <input css={css} ref={ref} {...props} />
+    <input ref={ref} css={css} {...props} />
   )
 );

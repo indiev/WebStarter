@@ -1,5 +1,6 @@
 import React from 'react';
 import Emotoin from '@emotion/core';
+
 import FlexView, { Props as FlexViewProps } from './FlexView';
 
 export type Props = FlexViewProps;
@@ -9,5 +10,5 @@ const css: Emotoin.CSSObject = {
 };
 
 export default (props: Props) => (
-  <FlexView fill content="center" items="center" css={css} {...props} />
+  <FlexView content="center" css={css} items="center" fill {...props} />
 );

@@ -1,6 +1,7 @@
 import React from 'react';
-import Container from 'Components/View/Container';
+
 import P from 'Components/Text/Paragraph';
+import Container from 'Components/View/Container';
 
 export default () => (
   <Container>

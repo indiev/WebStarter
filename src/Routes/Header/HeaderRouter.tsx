@@ -1,9 +1,10 @@
-import React from 'react';
 import Emotoin from '@emotion/core';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { FlexView } from 'Components/View';
+
 import { Link, NavLink } from 'Components/Link';
 import { Text } from 'Components/Text';
+import { FlexView } from 'Components/View';
 
 const css: Emotoin.CSSObject = {
   position: 'fixed',
@@ -22,13 +23,13 @@ const Logo = () => (
   </Link>
 );
 const Navbar = () => (
-  <FlexView row content="between" items="center" css={css}>
+  <FlexView content="between" css={css} items="center" row>
     <Logo />
-    <FlexView row grow={1} center>
-      <NavLink to="/signup" css={{ padding: '0 5px' }}>
+    <FlexView content="end" row>
+      <NavLink css={{ padding: '0 5px' }} to="/signup">
         <Text bold>Sign Up</Text>
       </NavLink>
-      <NavLink to="/signin" css={{ padding: '0 5px' }}>
+      <NavLink css={{ padding: '0 5px' }} to="/signin">
         <Text bold>Sign In</Text>
       </NavLink>
     </FlexView>

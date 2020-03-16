@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
 import Emotion from '@emotion/core';
-import FlexView from 'Components/View/FlexView';
+import React, { useState } from 'react';
+
 import Input from './Input';
+
+import FlexView from 'Components/View/FlexView';
 
 export type Props = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -43,19 +45,19 @@ export default React.forwardRef(
     };
 
     return (
-      <FlexView row={row} css={viewCSS} style={style}>
+      <FlexView css={viewCSS} row={row} style={style}>
         {label && name && (
-          <label htmlFor={name} css={labelCSS}>
+          <label css={labelCSS} htmlFor={name}>
             {`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
           </label>
         )}
         <Input
-          type={type}
+          ref={ref}
           css={inputCSS}
           name={name}
-          onFocus={() => setIsFoucs(true)}
+          type={type}
           onBlur={() => setIsFoucs(false)}
-          ref={ref}
+          onFocus={() => setIsFoucs(true)}
           {...props}
         />
       </FlexView>
