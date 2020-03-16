@@ -11,14 +11,14 @@ export default {
 export const Texts = () => (
   <FlexView>
     <FlexView>
-      <Text xxxLarge>Text - XXX-Large</Text>
-      <Text xxLarge>Text - XX-Large</Text>
-      <Text xLarge>Text - X-Large</Text>
+      <Text xxxLarge>Text - XXXLarge</Text>
+      <Text xxLarge>Text - XXLarge</Text>
+      <Text xLarge>Text - XLarge</Text>
       <Text large>Text - Large</Text>
       <Text>Text - Medium</Text>
       <Text small>Text - Small</Text>
-      <Text xSmall>Text - X-Small</Text>
-      <Text xxSmall>Text - XX-Small</Text>
+      <Text xSmall>Text - XSmall</Text>
+      <Text xxSmall>Text - XXSmall</Text>
     </FlexView>
     <FlexView
       css={{ marginTop: 15, 'span:not(:first-child)': { paddingLeft: 10 } }}
