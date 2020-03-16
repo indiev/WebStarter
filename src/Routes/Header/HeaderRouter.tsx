@@ -1,27 +1,43 @@
+import Emotoin from '@emotion/core';
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
+import { Link, NavLink } from 'Components/Link';
+import { Text } from 'Components/Text';
+import { FlexView } from 'Components/View';
+
+const css: Emotoin.CSSObject = {
+  position: 'fixed',
+  width: '100%',
+  height: '3rem',
+  padding: '0 1rem',
+  backgroundColor: 'var(--gray-dark)',
+  top: 0
+};
+
+const Logo = () => (
+  <Link to="/">
+    <Text bold large>
+      Logo
+    </Text>
+  </Link>
+);
 const Navbar = () => (
-  <nav
-    style={{
-      position: 'fixed',
-      display: 'flex',
-      width: '100%',
-      height: '3rem',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'var(--gray-dark)',
-      top: 0
-    }}
-  >
-    Header
-  </nav>
+  <FlexView content="between" css={css} items="center" row>
+    <Logo />
+    <FlexView content="end" row>
+      <NavLink css={{ padding: '0 5px' }} to="/signup">
+        <Text bold>Sign Up</Text>
+      </NavLink>
+      <NavLink css={{ padding: '0 5px' }} to="/signin">
+        <Text bold>Sign In</Text>
+      </NavLink>
+    </FlexView>
+  </FlexView>
 );
 
 export default () => (
-  <Router>
-    <Switch>
-      <Route component={Navbar} />
-    </Switch>
-  </Router>
+  <Switch>
+    <Route component={Navbar} />
+  </Switch>
 );

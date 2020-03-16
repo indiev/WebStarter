@@ -1,4 +1,6 @@
-import React from 'react';
+import Emotoin from '@emotion/core';
+import React, { forwardRef } from 'react';
+
 import Div, { Props as DivProps } from './Div';
 
 export type Props = DivProps & {
@@ -16,6 +18,7 @@ export type Props = DivProps & {
   grow?: number;
   shrink?: number;
   wrap?: boolean;
+  center?: boolean;
 };
 
 const justifyContents = {
@@ -28,31 +31,37 @@ const justifyContents = {
   stretch: 'stretch'
 };
 
-const defaultStyles: React.CSSProperties = {
+const alignItems = {
+  start: 'start',
+  end: 'end',
+  center: 'center',
+  stretch: 'stretch'
+};
+
+const defaultCSS: Emotoin.CSSObject = {
   display: 'flex'
 };
 
-export default ({
-  style,
-  row,
-  content,
-  items,
-  fill,
-  grow,
-  shrink,
-  wrap,
-  ...props
-}: Props) => {
-  const styles: React.CSSProperties = {
-    ...defaultStyles,
-    ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
-    ...(content && { justifyContent: justifyContents[content] }),
-    ...(items && { alignItems: items }),
-    ...(fill && { flex: '1 1 auto' }),
-    ...(grow && { flexGrow: grow }),
-    ...(shrink && { flexShrink: shrink }),
-    ...(wrap && { flexWrap: 'wrap' }),
-    ...style
-  };
-  return <Div style={styles} {...props} />;
-};
+export default forwardRef<HTMLDivElement, Props>(
+  (
+    { row, content, items, fill, grow, shrink, wrap, center, ...props }: Props,
+    ref
+  ) => {
+    const css: Emotoin.CSSObject = {
+      ...defaultCSS,
+      ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
+      ...(center && {
+        justifyContent: justifyContents.center,
+        alignItems: alignItems.center
+      }),
+      ...(content && { justifyContent: justifyContents[content] }),
+      ...(items && { alignItems: items }),
+      ...(fill && { flex: 1 }),
+      ...(grow && { flexGrow: grow }),
+      ...(shrink && { flexShrink: shrink }),
+      ...(wrap && { flexWrap: 'wrap' })
+    };
+
+    return <Div ref={ref} css={css} {...props} />;
+  }
+);
