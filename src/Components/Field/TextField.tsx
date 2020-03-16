@@ -31,6 +31,9 @@ export default React.forwardRef(
     const viewCSS: Emotion.CSSObject = {
       borderBottom: `1px solid ${(isFocus && 'var(--gray)') ||
         'var(--gray-dark)'}`,
+      ':focus': {
+        borderBottom: 'var(--gray)'
+      },
       transition: 'border 0.3s'
     };
 

@@ -50,7 +50,8 @@ export const FontSizes = {
   medium: '1rem',
   large: '1.25rem',
   xLarge: '1.5rem',
-  xxLarge: '2rem'
+  xxLarge: '1.75rem',
+  xxxLarge: '2rem'
 };
 
 export const Sizes = {
@@ -99,6 +100,7 @@ const cssVars: Emotion.CSSObject = {
   '--font-size-large': FontSizes.large,
   '--font-size-x-large': FontSizes.xLarge,
   '--font-size-xx-large': FontSizes.xxLarge,
+  '--font-size-xxx-large': FontSizes.xxxLarge,
   '--font-default-size': 'calc(10px + 0.3vw)',
   '--font-family-sans-serif': `Noto Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   '--font-family-monospace:': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`

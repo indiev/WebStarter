@@ -13,14 +13,19 @@ const css: Emotoin.CSSObject = {
   border: 'none',
   outline: 'none',
   padding: 0,
-  cursor: 'pointer',
   display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
   color: 'var(--text)',
   transition: 'filter 0.3s, background 0.3s',
+  ':not(:disabled)': {
+    cursor: 'pointer'
+  },
   ':hover': {
     filter: 'brightness(85%)'
+  },
+  ':active': {
+    filter: 'brightness(100%)'
   },
   ':disabled': {
     filter: 'opacity(50%)',
