@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
+export type Props = React.HTMLAttributes<HTMLDivElement>;
 
-export default (props: Props) => <div {...props} />;
+export default forwardRef<HTMLDivElement, Props>((props, ref) => (
+  <div ref={ref} {...props} />
+));

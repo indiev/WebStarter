@@ -1,5 +1,5 @@
 import Emotoin from '@emotion/core';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import Div, { Props as DivProps } from './Div';
 
@@ -42,30 +42,26 @@ const defaultCSS: Emotoin.CSSObject = {
   display: 'flex'
 };
 
-export default ({
-  row,
-  content,
-  items,
-  fill,
-  grow,
-  shrink,
-  wrap,
-  center,
-  ...props
-}: Props) => {
-  const css: Emotoin.CSSObject = {
-    ...defaultCSS,
-    ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
-    ...(center && {
-      justifyContent: justifyContents.center,
-      alignItems: alignItems.center
-    }),
-    ...(content && { justifyContent: justifyContents[content] }),
-    ...(items && { alignItems: items }),
-    ...(fill && { flex: 1 }),
-    ...(grow && { flexGrow: grow }),
-    ...(shrink && { flexShrink: shrink }),
-    ...(wrap && { flexWrap: 'wrap' })
-  };
-  return <Div css={css} {...props} />;
-};
+export default forwardRef<HTMLDivElement, Props>(
+  (
+    { row, content, items, fill, grow, shrink, wrap, center, ...props }: Props,
+    ref
+  ) => {
+    const css: Emotoin.CSSObject = {
+      ...defaultCSS,
+      ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
+      ...(center && {
+        justifyContent: justifyContents.center,
+        alignItems: alignItems.center
+      }),
+      ...(content && { justifyContent: justifyContents[content] }),
+      ...(items && { alignItems: items }),
+      ...(fill && { flex: 1 }),
+      ...(grow && { flexGrow: grow }),
+      ...(shrink && { flexShrink: shrink }),
+      ...(wrap && { flexWrap: 'wrap' })
+    };
+
+    return <Div ref={ref} css={css} {...props} />;
+  }
+);
