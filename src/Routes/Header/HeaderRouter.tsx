@@ -17,7 +17,7 @@ const css: Emotoin.CSSObject = {
 
 const Logo = () => (
   <Link to="/">
-    <Text bold large>
+    <Text large medium>
       Logo
     </Text>
   </Link>
@@ -27,10 +27,10 @@ const Navbar = () => (
     <Logo />
     <FlexView content="end" row>
       <NavLink css={{ padding: '0 5px' }} to="/signup">
-        <Text bold>Sign Up</Text>
+        <Text medium>Sign Up</Text>
       </NavLink>
       <NavLink css={{ padding: '0 5px' }} to="/signin">
-        <Text bold>Sign In</Text>
+        <Text medium>Sign In</Text>
       </NavLink>
     </FlexView>
   </FlexView>

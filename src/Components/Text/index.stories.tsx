@@ -24,15 +24,28 @@ export const Texts = () => (
       css={{ marginTop: 15, 'span:not(:first-child)': { paddingLeft: 10 } }}
       row
     >
-      <Text thin xLarge>
-        Thin
+      <Text light xLarge>
+        Light
       </Text>
       <Text xLarge>Regular</Text>
+      <Text medium xLarge>
+        Medium
+      </Text>
       <Text bold xLarge>
         Bold
       </Text>
-      <Text dark xLarge>
-        Dark
+      <Text black xLarge>
+        Black
+      </Text>
+    </FlexView>
+    <FlexView
+      css={{ marginTop: 15, 'span:not(:first-child)': { paddingTop: 10 } }}
+    >
+      <Text monospace xLarge>
+        Regular
+      </Text>
+      <Text bold monospace xLarge>
+        Bold
       </Text>
     </FlexView>
   </FlexView>

@@ -44,14 +44,18 @@ export const Colors = {
 };
 
 export const FontSizes = {
-  xxSmall: '0.6rem',
-  xSmall: '0.75rem',
-  small: '0.85rem',
-  medium: '1rem',
-  large: '1.25rem',
-  xLarge: '1.5rem',
-  xxLarge: '1.75rem',
-  xxxLarge: '2rem'
+  xxSmall: '0.625rem', // 10pt
+  xSmall: '0.75rem', // 12pt
+  small: '0.875rem', // 14pt
+  medium: '1rem', // 16pt
+  large: '1.25rem', // 20pt
+  xLarge: '1.5rem', // 24pt
+  // xxLarge: '1.75rem', // 28pt
+  // xxxLarge: '2rem' // 32pt
+  xxLarge: '2.125rem', //  34pt
+  xxxLarge: '3rem', // 48pt
+  xxxxLarge: '3.75rem', // 60pt
+  xxxxxLarge: '6rem' // 96pt
 };
 
 export const Sizes = {
@@ -103,7 +107,7 @@ const cssVars: Emotion.CSSObject = {
   '--font-size-xxx-large': FontSizes.xxxLarge,
   '--font-default-size': 'calc(10px + 0.3vw)',
   '--font-family-sans-serif': `Noto Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-  '--font-family-monospace:': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
+  '--font-family-monospace': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 };
 
 export const rootStyles: Emotion.CSSObject = {

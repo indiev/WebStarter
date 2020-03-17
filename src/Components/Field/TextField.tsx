@@ -38,7 +38,7 @@ export default React.forwardRef(
     };
 
     const labelCSS: Emotion.CSSObject = {
-      fontWeight: 'bold',
+      fontWeight: 'medium',
       ...((row && { marginRight: '0.35vw' }) || { marginBottom: '0.35vw' })
     };
 

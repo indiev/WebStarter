@@ -22,7 +22,7 @@ export default () => {
 
   return (
     <Container>
-      <Text bold xLarge>
+      <Text medium xLarge>
         Sign Up
       </Text>
       <FlexView style={{ padding: 15, width: 300 }}>
@@ -51,7 +51,7 @@ export default () => {
             }}
             type="submit"
           >
-            <Text bold large>
+            <Text large medium>
               Sign Up
             </Text>
           </Button>

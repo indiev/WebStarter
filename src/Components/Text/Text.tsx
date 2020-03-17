@@ -13,7 +13,7 @@ export type Props = React.DetailedHTMLProps<
     | 'large'
     | 'x-large'
     | 'xx-large';
-  weight?: 'thin' | 'regular' | 'bold' | 'dark';
+  weight?: 'light' | 'regular' | 'medium' | 'bold';
   xxSmall?: boolean;
   xSmall?: boolean;
   small?: boolean;
@@ -21,9 +21,11 @@ export type Props = React.DetailedHTMLProps<
   xLarge?: boolean;
   xxLarge?: boolean;
   xxxLarge?: boolean;
-  thin?: boolean;
+  light?: boolean;
+  medium?: boolean;
   bold?: boolean;
-  dark?: boolean;
+  black?: boolean;
+  monospace?: boolean;
 };
 
 const SizeStyle: { [key: string]: Emotoin.CSSObject } = {
@@ -38,16 +40,19 @@ const SizeStyle: { [key: string]: Emotoin.CSSObject } = {
 };
 
 const WeightStyle: { [key: string]: Emotoin.CSSObject } = {
-  thin: {
-    fontWeight: 200
+  light: {
+    fontWeight: 300
   },
-  reqular: {
+  regular: {
     fontWeight: 400
+  },
+  medium: {
+    fontWeight: 500
   },
   bold: {
     fontWeight: 700
   },
-  dark: {
+  black: {
     fontWeight: 900
   }
 };
@@ -62,9 +67,11 @@ export default ({
   xLarge,
   xxLarge,
   xxxLarge,
-  thin,
+  light,
+  medium,
   bold,
-  dark,
+  black,
+  monospace,
   ...props
 }: Props) => {
   const css = {
@@ -81,11 +88,13 @@ export default ({
     ],
     ...WeightStyle[
       weight ||
-        (thin && 'thin') ||
+        (light && 'light') ||
+        (medium && 'medium') ||
         (bold && 'bold') ||
-        (dark && 'dark') ||
+        (black && 'black') ||
         'regular'
-    ]
+    ],
+    ...((monospace && { fontFamily: 'var(--font-family-monospace)' }) || {})
   };
 
   return <span css={css} {...props} />;
