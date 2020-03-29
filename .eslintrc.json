@@ -34,13 +34,13 @@
     ],
     // "no-return-await": "off",
     "comma-dangle": ["error", "never"],
-    "arrow-parens": ["error", "as-needed"],
     // "no-underscore-dangle": "off",
     "prettier/prettier": [
       "warn",
       {
         "singleQuote": true,
-        "printWidth": 80
+        "printWidth": 80,
+        "trailingComma": "none"
       },
       { "usePrettierrc": false }
     ]
