@@ -2,7 +2,7 @@ import Emotoin from '@emotion/core';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Div from 'Components/View/Div';
+import View from 'Components/View/View';
 
 const css: Emotoin.CSSObject = {
   position: 'fixed',
@@ -15,7 +15,7 @@ const css: Emotoin.CSSObject = {
   bottom: 0
 };
 
-const Navbar = () => <Div css={css}>Footer</Div>;
+const Navbar = () => <View css={css}>Footer</View>;
 
 export default () => (
   <Switch>

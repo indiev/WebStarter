@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import Button from 'Components/Button/Button';
 import TextField from 'Components/Field/TextField';
@@ -14,6 +15,7 @@ type FormData = {
 };
 
 export default () => {
+  const [t] = useTranslation('signUp');
   const { register, handleSubmit } = useForm<FormData>({ mode: 'onChange' });
 
   const onSumbit = (data: FormData) => {
@@ -23,7 +25,7 @@ export default () => {
   return (
     <Container>
       <Text medium xLarge>
-        Sign Up
+        {t('title')}
       </Text>
       <FlexView style={{ padding: 15, width: 300 }}>
         <Form onSubmit={handleSubmit(onSumbit)}>
