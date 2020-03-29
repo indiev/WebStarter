@@ -1,9 +1,9 @@
 import Emotoin from '@emotion/core';
 import React, { forwardRef } from 'react';
 
-import Div, { Props as DivProps } from './Div';
+import View, { Props as ViewProps } from './View';
 
-export type Props = DivProps & {
+export type Props = ViewProps & {
   row?: boolean;
   fill?: boolean;
   content?:
@@ -62,6 +62,6 @@ export default forwardRef<HTMLDivElement, Props>(
       ...(wrap && { flexWrap: 'wrap' })
     };
 
-    return <Div ref={ref} css={css} {...props} />;
+    return <View ref={ref} css={css} {...props} />;
   }
 );
