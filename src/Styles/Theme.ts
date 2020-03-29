@@ -15,10 +15,10 @@ const Grays = {
 const BasicColors = {
   White: '#fff',
   Black: '#000',
-  GrayLight: Grays.G100,
-  Gray: Grays.G600,
+  GrayLight: Grays.G200,
+  Gray: Grays.G500,
   GrayDark: Grays.G800,
-  Dark: Grays.G900,
+  Dark: '#121212',
   Blue: '#007bff',
   Indigo: '#6610f2',
   Purple: '#6f42c1',
@@ -31,8 +31,13 @@ const BasicColors = {
   Cyan: '#17a2b8'
 };
 
+const DarkThemeColors = {
+  Red: '#f44336'
+};
+
 export const Colors = {
   ...BasicColors,
+  ...DarkThemeColors,
   Primary: BasicColors.Blue,
   Secondary: BasicColors.Gray,
   Success: BasicColors.Green,
@@ -78,8 +83,10 @@ const cssVars: Emotion.CSSObject = {
   '--teal': Colors.Teal,
   '--cyan': Colors.Cyan,
   '--white': Colors.White,
+  '--gray-light': Colors.GrayLight,
   '--gray': Colors.Gray,
   '--gray-dark': Colors.GrayDark,
+  '--black': Colors.Black,
   '--primary': Colors.Primary,
   '--secondary': Colors.Secondary,
   '--success': Colors.Success,
@@ -89,7 +96,7 @@ const cssVars: Emotion.CSSObject = {
   '--light': Colors.Light,
   '--dark': Colors.Dark,
   '--text': Colors.White,
-  '--text-light': Colors.Gray,
+  '--text-light': Colors.GrayLight,
   '--text-dark': Colors.GrayDark,
   '--fill': Colors.White,
   '--breakpoint-xs': `${Sizes.xs}px`,
@@ -110,6 +117,51 @@ const cssVars: Emotion.CSSObject = {
   '--font-family-monospace': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 };
 
+const html: Emotion.CSSObject = {
+  fontFamily: 'var(--font-family-sans-serif)',
+  fontSize: 'var(--font-default-size)',
+  WebkitFontSmoothing: 'antialiased', // Antialiasing.
+  MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+  // Change from `box-sizing: content-box` so that `width`
+  // is not affected by `padding` or `border`.
+  boxSizing: 'border-box',
+  backgroundColor: 'var(--dark)'
+};
+
+const body: Emotion.CSSObject = {
+  margin: 0, // Remove the margin in all browsers.
+  color: 'var(--text)',
+  fill: 'var(--fill)',
+  // Add support for document.body.requestFullScreen().
+  // Other elements, if background transparent, are not supported.
+  '&::backdrop': {
+    backgroundColor: 'var(--gray-dark)'
+  },
+  '@media print': {
+    backgroundColor: 'var(--white)'
+  }
+};
+
+const etc: Emotion.CSSObject = {
+  a: {
+    textDecoration: 'none',
+    color: 'unset'
+  },
+  'strong, b': {
+    fontWeight: 700
+  }
+};
+
+const global: Emotion.CSSObject = {
+  html,
+  '*, *::before, *::after': {
+    boxSizing: 'inherit'
+  },
+  body,
+  ...etc
+};
+
 export const rootStyles: Emotion.CSSObject = {
-  ':root': cssVars
+  ':root': cssVars,
+  ...global
 };

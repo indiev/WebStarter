@@ -1,3 +1,1 @@
-module.exports = ({ config }) => {
-  return require("../config-overrides")(config);
-};
+module.exports = ({ config }) => require("../config-overrides")(config);
