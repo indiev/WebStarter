@@ -1,10 +1,7 @@
 import Emotoin from '@emotion/core';
 import React from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
+export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   fit?: boolean;
 };
 
@@ -32,7 +29,6 @@ const css: Emotoin.CSSObject = {
     pointerEvents: 'none'
   }
 };
-
 export default ({ type = 'button', fit, ...props }: Props) => (
   <button
     css={{ ...((fit && { width: 'fit-content' }) || {}), ...css }}

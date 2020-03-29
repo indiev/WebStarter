@@ -9,7 +9,7 @@ export default { title: 'Icon' };
 
 export const Icons = () => (
   <FlexView row>
-    {Object.keys(IconList).map(name => (
+    {Object.keys(IconList).map((name) => (
       <Icon name={name} />
     ))}
   </FlexView>
