@@ -4,10 +4,19 @@ import TextField from './TextField';
 
 import { FlexView } from 'Components/View';
 
-export default { title: 'Input' };
+export default { title: 'Field' };
 
 export const TextFields = () => (
-  <FlexView>
-    <TextField css={{ color: 'var(--dark)' }} placeholder="Input text" />
+  <FlexView css={{ backgroundColor: 'var(--dark)' }}>
+    <FlexView css={{ padding: 20 }}>
+      <TextField helper="helper text" name="name" label />
+      <TextField error="error occured" helper="helper text" name="name" label />
+      <TextField
+        helper="helper text"
+        name="name"
+        placeholder="placeholder"
+        label
+      />
+    </FlexView>
   </FlexView>
 );

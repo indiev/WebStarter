@@ -1,68 +1,133 @@
 import Emotion from '@emotion/core';
 import React, { useState } from 'react';
 
-import Input from './Input';
+import Input, { Props as InputProps } from './Input';
 
-import FlexView from 'Components/View/FlexView';
+import Text from 'Components/Text/Text';
+import { FlexView } from 'Components/View';
 
-export type Props = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
+export type Props = InputProps & {
   row?: boolean;
   label?: boolean;
+  helper?: string;
+  error?: string;
 };
 
-export default React.forwardRef(
+export default React.forwardRef<HTMLInputElement, Props>(
   (
-    {
-      type = 'text',
-      name,
-      style,
-      row,
-      label,
-      value: propValue,
-      ...props
-    }: Props,
-    ref: any
+    { type = 'text', name, row, label, helper, error, ...props }: Props,
+    ref
   ) => {
-    const [isFocus, setIsFoucs] = useState(false);
-
-    const viewCSS: Emotion.CSSObject = {
-      borderBottom: `1px solid ${(isFocus && 'var(--gray)') ||
-        'var(--gray-dark)'}`,
-      ':focus': {
-        borderBottom: 'var(--gray)'
-      },
-      transition: 'border 0.3s'
+    const { placeholder } = props;
+    const [value, setValue] = useState('');
+    const [focus, setFocus] = useState(false);
+    const wrapperCSS: Emotion.CSSObject = {
+      // borderBottom: `1px solid var(--gray)}`,
+      // ...(error && { borderBottom: `1px solid var(--danger) !important` }),
+      // '> :focus': {
+      //   borderBottom: '1px solid var(--gray-dark)'
+      // },
+      transition: 'border 0.3s',
+      position: 'relative'
     };
 
     const labelCSS: Emotion.CSSObject = {
-      fontWeight: 'medium',
-      ...((row && { marginRight: '0.35vw' }) || { marginBottom: '0.35vw' })
+      top: 0,
+      left: 0,
+      position: 'absolute',
+      ...(row && { marginRight: '0.35vw' }),
+      ...(error && { color: 'var(--danger)' }),
+      display: 'block',
+      transform: 'translate(0, 18px) scale(1)',
+      transformOrigin: 'top left',
+      ...((focus || value !== '' || placeholder) && {
+        transform: 'translate(0, 1.5px) scale(0.75)',
+        transformOrigin: 'top left'
+      }),
+      transition:
+        'color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms'
+    };
+
+    const inputWrapper: Emotion.CSSObject = {
+      '@-webkit-keyframes mui-auto-fill': {},
+      '@-webkit-keyframes mui-auto-fill-cancel': {},
+      animationName: 'mui-auto-fill-cancel',
+      color: '#fff',
+      cursor: 'text',
+      display: 'inline-flex',
+      position: 'relative',
+      fontSize: 'var(--font-size-medium)',
+      boxSizing: 'border-box',
+      alignItems: 'center',
+      lineHeight: '1.1875em',
+      letterSpacing: '0.00938em',
+      ':before': {
+        left: 0,
+        right: 0,
+        bottom: 0,
+        content: '"\\00a0"',
+        position: 'absolute',
+        transition:
+          'border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.7)',
+        pointerEvents: 'none'
+      },
+      ':hover:before': {
+        borderBottom: '2px solid #fff'
+      },
+      ':after': {
+        left: 0,
+        right: 0,
+        bottom: 0,
+        content: '""',
+        position: 'absolute',
+        transform: 'scaleX(0)',
+        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
+        borderBottom: '2px solid #90caf9',
+        pointerEvents: 'none',
+        ...(focus && { transform: 'scaleX(1)' })
+        // '> :focus': { transform: 'scaleX(1)' }
+      }
     };
 
     const inputCSS: Emotion.CSSObject = {
-      padding: '0.5vw 0'
-      // borderRadius: '0.3vw'
+      // paddingBottom: '0.5vw',
+      padding: '17px 0 7px',
+      height: '1.1875em'
     };
 
     return (
-      <FlexView css={viewCSS} row={row} style={style}>
-        {label && name && (
-          <label css={labelCSS} htmlFor={name}>
-            {`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
-          </label>
+      <FlexView>
+        <FlexView css={wrapperCSS} row={row}>
+          {label && name && (
+            <Text as="label" css={labelCSS} htmlFor={name}>
+              {`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+            </Text>
+          )}
+          <FlexView css={inputWrapper}>
+            <Input
+              ref={ref}
+              css={inputCSS}
+              name={name}
+              type={type}
+              onBlur={() => setFocus(false)}
+              onChange={(e) => setValue(e.currentTarget.value)}
+              onFocus={() => setFocus(true)}
+              {...props}
+            />
+          </FlexView>
+        </FlexView>
+        {(error || helper) && (
+          <Text
+            css={{
+              marginTop: '0.5vw',
+              ...(error && { color: 'var(--danger)' })
+            }}
+            xSmall
+          >
+            {error || helper}
+          </Text>
         )}
-        <Input
-          ref={ref}
-          css={inputCSS}
-          name={name}
-          type={type}
-          onBlur={() => setIsFoucs(false)}
-          onFocus={() => setIsFoucs(true)}
-          {...props}
-        />
       </FlexView>
     );
   }

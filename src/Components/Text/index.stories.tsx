@@ -24,6 +24,12 @@ export const Texts = () => (
       css={{ marginTop: 15, 'span:not(:first-child)': { paddingLeft: 10 } }}
       row
     >
+      <Text css={{ fontWeight: 100 }} xLarge>
+        Thin
+      </Text>
+      <Text css={{ fontWeight: 200 }} xLarge>
+        Extra Light
+      </Text>
       <Text light xLarge>
         Light
       </Text>
@@ -31,8 +37,14 @@ export const Texts = () => (
       <Text medium xLarge>
         Medium
       </Text>
+      <Text css={{ fontWeight: 600 }} xLarge>
+        Semi Bold
+      </Text>
       <Text bold xLarge>
         Bold
+      </Text>
+      <Text css={{ fontWeight: 800 }} xLarge>
+        Extra Bold
       </Text>
       <Text black xLarge>
         Black
@@ -42,10 +54,10 @@ export const Texts = () => (
       css={{ marginTop: 15, 'span:not(:first-child)': { paddingTop: 10 } }}
     >
       <Text monospace xLarge>
-        Regular
+        Regular Monospace
       </Text>
       <Text bold monospace xLarge>
-        Bold
+        Bold Monospace
       </Text>
     </FlexView>
   </FlexView>

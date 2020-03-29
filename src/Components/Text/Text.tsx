@@ -1,10 +1,11 @@
-import Emotoin from '@emotion/core';
+import * as Emotion from '@emotion/core';
 import React from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLSpanElement>,
-  HTMLSpanElement
-> & {
+export type Props = (
+  | React.HTMLAttributes<HTMLSpanElement>
+  | React.LabelHTMLAttributes<HTMLLabelElement>
+) & {
+  as?: string;
   size?:
     | 'medium'
     | 'xx-small'
@@ -28,7 +29,7 @@ export type Props = React.DetailedHTMLProps<
   monospace?: boolean;
 };
 
-const SizeStyle: { [key: string]: Emotoin.CSSObject } = {
+const SizeStyle: { [key: string]: Emotion.CSSObject } = {
   'xx-small': { fontSize: 'var(--font-size-xx-small)' },
   'x-small': { fontSize: 'var(--font-size-x-small)' },
   small: { fontSize: 'var(--font-size-small)' },
@@ -39,7 +40,14 @@ const SizeStyle: { [key: string]: Emotoin.CSSObject } = {
   'xxx-large': { fontSize: 'var(--font-size-xxx-large)' }
 };
 
-const WeightStyle: { [key: string]: Emotoin.CSSObject } = {
+// light, regular, bold
+const WeightStyle: { [key: string]: Emotion.CSSObject } = {
+  thin: {
+    fontWeight: 100
+  },
+  extraLight: {
+    fontWeight: 200
+  },
   light: {
     fontWeight: 300
   },
@@ -49,8 +57,14 @@ const WeightStyle: { [key: string]: Emotoin.CSSObject } = {
   medium: {
     fontWeight: 500
   },
+  semiBold: {
+    fontWeight: 600
+  },
   bold: {
     fontWeight: 700
+  },
+  extraBold: {
+    fontWeight: 800
   },
   black: {
     fontWeight: 900
@@ -58,6 +72,7 @@ const WeightStyle: { [key: string]: Emotoin.CSSObject } = {
 };
 
 export default ({
+  as = 'span',
   size,
   weight,
   xxSmall,
@@ -74,7 +89,8 @@ export default ({
   monospace,
   ...props
 }: Props) => {
-  const css = {
+  const css: Emotion.CSSObject = {
+    color: 'var(--text)',
     ...SizeStyle[
       size ||
         (xxSmall && 'xx-small') ||
@@ -94,8 +110,8 @@ export default ({
         (black && 'black') ||
         'regular'
     ],
-    ...((monospace && { fontFamily: 'var(--font-family-monospace)' }) || {})
+    ...(monospace && { fontFamily: 'var(--font-family-monospace)' })
   };
 
-  return <span css={css} {...props} />;
+  return Emotion.jsx(as, { css, ...props });
 };
