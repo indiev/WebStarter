@@ -27,7 +27,7 @@ export default () => {
       <Text medium xLarge>
         {t('title')}
       </Text>
-      <FlexView style={{ padding: 15, width: 300 }}>
+      <FlexView css={{ padding: 15, width: 300 }}>
         <Form onSubmit={handleSubmit(onSumbit)}>
           <TextField
             ref={register({ required: true })}
@@ -39,9 +39,9 @@ export default () => {
           <TextField
             ref={register({ required: true })}
             autoComplete="new-password"
+            css={{ marginTop: 10 }}
             name="password"
             placeholder="Please enter your password"
-            style={{ marginTop: 10 }}
             type="password"
             label
           />
