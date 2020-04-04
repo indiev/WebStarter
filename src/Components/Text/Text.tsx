@@ -1,6 +1,8 @@
 import * as Emotion from '@emotion/core';
 import React from 'react';
 
+import { FontSizes, TextColors } from 'Styles/Theme';
+
 export type Props = (
   | React.HTMLAttributes<HTMLSpanElement>
   | React.LabelHTMLAttributes<HTMLLabelElement>
@@ -30,14 +32,14 @@ export type Props = (
 };
 
 const SizeStyle: { [key: string]: Emotion.CSSObject } = {
-  'xx-small': { fontSize: 'var(--font-size-xx-small)' },
-  'x-small': { fontSize: 'var(--font-size-x-small)' },
-  small: { fontSize: 'var(--font-size-small)' },
-  medium: { fontSize: 'var(--font-size-medium)' },
-  large: { fontSize: 'var(--font-size-large)' },
-  'x-large': { fontSize: 'var(--font-size-x-large)' },
-  'xx-large': { fontSize: 'var(--font-size-xx-large)' },
-  'xxx-large': { fontSize: 'var(--font-size-xxx-large)' }
+  'xx-small': { fontSize: FontSizes.xxSmall },
+  'x-small': { fontSize: FontSizes.xSmall },
+  small: { fontSize: FontSizes.small },
+  medium: { fontSize: FontSizes.medium },
+  large: { fontSize: FontSizes.large },
+  'x-large': { fontSize: FontSizes.xLarge },
+  'xx-large': { fontSize: FontSizes.xxLarge },
+  'xxx-large': { fontSize: FontSizes.xxxLarge }
 };
 
 // light, regular, bold
@@ -90,7 +92,7 @@ export default ({
   ...props
 }: Props) => {
   const css: Emotion.CSSObject = {
-    color: 'var(--text)',
+    color: TextColors.text,
     ...SizeStyle[
       size ||
         (xxSmall && 'xx-small') ||

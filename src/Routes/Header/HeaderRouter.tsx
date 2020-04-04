@@ -3,9 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 
+import { Icon } from 'Components/Icon';
 import { Link, NavLink } from 'Components/Link';
 import { Text } from 'Components/Text';
 import { FlexView } from 'Components/View';
+import { Colors } from 'Styles/Theme';
 
 const css: Emotoin.CSSObject = {
   position: 'fixed',
@@ -21,9 +23,12 @@ const Logo = () => {
 
   return (
     <Link to="/">
-      <Text black large>
-        {t('logo')}
-      </Text>
+      <FlexView center row>
+        <Icon color={Colors.white} css={{ marginRight: 5 }} name="logo" />
+        <Text black large>
+          {t('logo')}
+        </Text>
+      </FlexView>
     </Link>
   );
 };

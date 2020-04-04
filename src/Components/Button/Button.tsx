@@ -1,6 +1,8 @@
 import Emotoin from '@emotion/core';
 import React from 'react';
 
+import { TextColors } from 'Styles/Theme';
+
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   fit?: boolean;
 };
@@ -13,7 +15,7 @@ const css: Emotoin.CSSObject = {
   display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
-  color: 'var(--text)',
+  color: TextColors.text,
   transition: 'filter 0.3s, background 0.3s',
   ':not(:disabled)': {
     cursor: 'pointer'

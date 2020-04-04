@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import View from 'Components/View/View';
+import { Colors } from 'Styles/Theme';
 
 const css: Emotoin.CSSObject = {
   position: 'fixed',
@@ -11,7 +12,7 @@ const css: Emotoin.CSSObject = {
   height: '3rem',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: 'var(--gray-dark)',
+  backgroundColor: Colors.grayDark,
   bottom: 0
 };
 

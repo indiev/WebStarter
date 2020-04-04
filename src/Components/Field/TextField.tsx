@@ -5,6 +5,7 @@ import Input, { Props as InputProps } from './Input';
 
 import Text from 'Components/Text/Text';
 import { FlexView } from 'Components/View';
+import { Colors, FontSizes } from 'Styles/Theme';
 
 export type Props = InputProps & {
   row?: boolean;
@@ -12,6 +13,14 @@ export type Props = InputProps & {
   helper?: string;
   error?: string;
 };
+
+export function hasValue(value: any) {
+  return value != null && !(Array.isArray(value) && value.length === 0);
+}
+
+export function isFilled(obj?: { value: any }) {
+  return obj && hasValue(obj.value) && obj.value !== '';
+}
 
 export default React.forwardRef<HTMLInputElement, Props>(
   (
@@ -36,7 +45,7 @@ export default React.forwardRef<HTMLInputElement, Props>(
       left: 0,
       position: 'absolute',
       ...(row && { marginRight: '0.35vw' }),
-      ...(error && { color: 'var(--danger)' }),
+      ...(error && { color: Colors.danger }),
       display: 'block',
       transform: 'translate(0, 18px) scale(1)',
       transformOrigin: 'top left',
@@ -49,14 +58,11 @@ export default React.forwardRef<HTMLInputElement, Props>(
     };
 
     const inputWrapper: Emotion.CSSObject = {
-      '@-webkit-keyframes mui-auto-fill': {},
-      '@-webkit-keyframes mui-auto-fill-cancel': {},
-      animationName: 'mui-auto-fill-cancel',
       color: '#fff',
       cursor: 'text',
       display: 'inline-flex',
       position: 'relative',
-      fontSize: 'var(--font-size-medium)',
+      fontSize: FontSizes.medium,
       boxSizing: 'border-box',
       alignItems: 'center',
       lineHeight: '1.1875em',
@@ -86,13 +92,12 @@ export default React.forwardRef<HTMLInputElement, Props>(
         borderBottom: '2px solid #90caf9',
         pointerEvents: 'none',
         ...(focus && { transform: 'scaleX(1)' })
-        // '> :focus': { transform: 'scaleX(1)' }
       }
     };
 
     const inputCSS: Emotion.CSSObject = {
       // paddingBottom: '0.5vw',
-      padding: '17px 0 7px',
+      margin: '17px 0 7px',
       height: '1.1875em'
     };
 
@@ -121,7 +126,7 @@ export default React.forwardRef<HTMLInputElement, Props>(
           <Text
             css={{
               marginTop: '0.5vw',
-              ...(error && { color: 'var(--danger)' })
+              ...(error && { color: Colors.danger })
             }}
             xSmall
           >
