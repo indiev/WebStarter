@@ -15,8 +15,9 @@ export default ({ width, height, ...props }: Props) => (
     css={css}
     focusable="false"
     pointerEvents="none"
-    viewBox={`0 0 ${width || DEAFAULT_VIEW_BOX_SIZE} ${height ||
-      DEAFAULT_VIEW_BOX_SIZE}`}
+    viewBox={`0 0 ${width || DEAFAULT_VIEW_BOX_SIZE} ${
+      height || DEAFAULT_VIEW_BOX_SIZE
+    }`}
     {...props}
   />
 );

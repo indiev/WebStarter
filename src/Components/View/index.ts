@@ -1,4 +1,4 @@
-import Div from './Div';
 import FlexView from './FlexView';
+import View from './View';
 
-export { Div, FlexView };
+export { FlexView, View };

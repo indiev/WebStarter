@@ -3,6 +3,7 @@
   "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
   "plugins": ["import", "react-hooks", "prettier"],
   "rules": {
+    "no-param-reassign": ["error", { "props": false }],
     // "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-one-expression-per-line": "off",
@@ -29,18 +30,18 @@
       }
     ],
     "sort-imports": [
-      "error",
+      "warn",
       { "ignoreCase": true, "ignoreDeclarationSort": true }
     ],
     // "no-return-await": "off",
     "comma-dangle": ["error", "never"],
-    "arrow-parens": ["error", "as-needed"],
     // "no-underscore-dangle": "off",
     "prettier/prettier": [
       "warn",
       {
         "singleQuote": true,
-        "printWidth": 80
+        "printWidth": 80,
+        "trailingComma": "none"
       },
       { "usePrettierrc": false }
     ]

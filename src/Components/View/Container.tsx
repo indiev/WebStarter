@@ -1,5 +1,5 @@
-import React from 'react';
 import Emotoin from '@emotion/core';
+import React from 'react';
 
 import FlexView, { Props as FlexViewProps } from './FlexView';
 

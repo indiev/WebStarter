@@ -1,11 +1,10 @@
-import { Global } from '@emotion/core';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import FooterRouter from 'Routes/Footer/FooterRouter';
 import HeaderRouter from 'Routes/Header/HeaderRouter';
 import MainRouter from 'Routes/Main/MainRouter';
-import { rootStyles } from 'Styles/Theme';
+import GlobalStyles from 'Styles/GlobalStyles';
 
 export type Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLElement>,
@@ -29,7 +28,7 @@ export const Footer = (props: Props) => (
 );
 export const Root = ({ children }: Props) => (
   <>
-    <Global styles={rootStyles} />
+    <GlobalStyles />
     <Router>{children}</Router>
   </>
 );

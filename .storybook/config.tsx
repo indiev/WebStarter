@@ -1,14 +1,13 @@
-import { Global } from '@emotion/core';
 import { addDecorator, configure } from '@storybook/react';
 import React from 'react';
 
-import { rootStyles } from '../src/Styles/Theme';
+import GlobalStyles from '../src/Styles/GlobalStyles';
 
-configure(require.context('../src', true, /\.stories\.js$/), module);
+configure(require.context('../src', true, /\.stories\.(js|tsx)$/), module);
 
 addDecorator((story) => (
     <>
-      <Global styles={rootStyles} />
+      <GlobalStyles />
       {story()}
     </>
   )

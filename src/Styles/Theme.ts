@@ -1,5 +1,7 @@
 import Emotion from '@emotion/core';
 
+import { toGetVariables, toVariables } from 'Utils/styles';
+
 const Grays = {
   G100: '#f8f9fa',
   G200: '#e9ecef',
@@ -13,47 +15,57 @@ const Grays = {
 };
 
 const BasicColors = {
-  White: '#fff',
-  Black: '#000',
-  GrayLight: Grays.G100,
-  Gray: Grays.G600,
-  GrayDark: Grays.G800,
-  Dark: Grays.G900,
-  Blue: '#007bff',
-  Indigo: '#6610f2',
-  Purple: '#6f42c1',
-  Pink: '#e83e8c',
-  Red: '#dc3545',
-  Orange: '#fd7e14',
-  Yellow: '#ffc107',
-  Green: '#28a745',
-  Teal: '#20c997',
-  Cyan: '#17a2b8'
+  white: '#fff',
+  black: '#000',
+  grayLight: Grays.G200,
+  gray: Grays.G500,
+  grayDark: Grays.G800,
+  dark: '#121212',
+  blue: '#007bff',
+  indigo: '#6610f2',
+  purple: '#6f42c1',
+  pink: '#e83e8c',
+  red: '#dc3545',
+  orange: '#fd7e14',
+  yellow: '#ffc107',
+  green: '#28a745',
+  teal: '#20c997',
+  cyan: '#17a2b8'
 };
 
-export const Colors = {
+const DarkThemeColors = {
+  Red: '#f44336'
+};
+
+const StyleColors = {
   ...BasicColors,
-  Primary: BasicColors.Blue,
-  Secondary: BasicColors.Gray,
-  Success: BasicColors.Green,
-  Danger: BasicColors.Red,
-  Warning: BasicColors.Yellow,
-  Info: BasicColors.Cyan,
-  Light: BasicColors.GrayLight,
-  Dark: BasicColors.Dark
+  ...DarkThemeColors,
+  primary: BasicColors.blue,
+  secondary: BasicColors.gray,
+  success: BasicColors.green,
+  danger: BasicColors.red,
+  warning: BasicColors.yellow,
+  info: BasicColors.cyan,
+  light: BasicColors.grayLight,
+  dark: BasicColors.dark
 };
 
-export const FontSizes = {
-  xxSmall: '0.6rem',
-  xSmall: '0.75rem',
-  small: '0.85rem',
-  medium: '1rem',
-  large: '1.25rem',
-  xLarge: '1.5rem',
-  xxLarge: '2rem'
+const StyleFontSizes = {
+  xxSmall: '0.625rem', // 10pt
+  xSmall: '0.75rem', // 12pt
+  small: '0.875rem', // 14pt
+  medium: '1rem', // 16pt
+  large: '1.25rem', // 20pt
+  xLarge: '1.5rem', // 24pt
+  // xxLarge: '1.75rem', // 28pt
+  // xxxLarge: '2rem' // 32pt
+  xxLarge: '2.125rem', //  34pt
+  xxxLarge: '3rem', // 48pt
+  xxxxLarge: '3.75rem', // 60pt
+  xxxxxLarge: '6rem' // 96pt
 };
 
-export const Sizes = {
+export const StyleSizes = {
   xs: 0,
   sm: 576,
   md: 768,
@@ -61,49 +73,75 @@ export const Sizes = {
   xl: 1200
 };
 
-const cssVars: Emotion.CSSObject = {
-  '--blue': Colors.Blue,
-  '--indigo': Colors.Indigo,
-  '--purple': Colors.Purple,
-  '--pink': Colors.Pink,
-  '--red': Colors.Red,
-  '--orange': Colors.Orange,
-  '--yellow': Colors.Yellow,
-  '--green': Colors.Green,
-  '--teal': Colors.Teal,
-  '--cyan': Colors.Cyan,
-  '--white': Colors.White,
-  '--gray': Colors.Gray,
-  '--gray-dark': Colors.GrayDark,
-  '--primary': Colors.Primary,
-  '--secondary': Colors.Secondary,
-  '--success': Colors.Success,
-  '--info': Colors.Info,
-  '--warning': Colors.Warning,
-  '--danger': Colors.Danger,
-  '--light': Colors.Light,
-  '--dark': Colors.Dark,
-  '--text': Colors.White,
-  '--text-light': Colors.Gray,
-  '--text-dark': Colors.GrayDark,
-  '--fill': Colors.White,
-  '--breakpoint-xs': `${Sizes.xs}px`,
-  '--breakpoint-sm': `${Sizes.sm}px`,
-  '--breakpoint-md': `${Sizes.md}px`,
-  '--breakpoint-lg': `${Sizes.lg}px`,
-  '--breakpoint-xl': `${Sizes.xl}px`,
-  '--font-size-xx-small': FontSizes.xxSmall,
-  '--font-size-x-small': FontSizes.xSmall,
-  '--font-size-small': FontSizes.small,
-  '--font-size-medium': FontSizes.medium,
-  '--font-size-large': FontSizes.large,
-  '--font-size-x-large': FontSizes.xLarge,
-  '--font-size-xx-large': FontSizes.xxLarge,
-  '--font-default-size': 'calc(10px + 0.3vw)',
+export const Colors = toGetVariables(StyleColors);
+export const Sizes = toGetVariables(StyleSizes);
+export const FontSizes = toGetVariables(StyleFontSizes);
+
+const StyleTextColors = {
+  text: Colors.white,
+  textLight: Colors.grayLight,
+  textDark: Colors.grayDark,
+  fill: Colors.white
+};
+
+export const TextColors = toGetVariables(StyleTextColors);
+
+const styleVariables: Emotion.CSSObject = {
+  ...toVariables(StyleColors),
+  ...toVariables(StyleTextColors),
+  ...toVariables(StyleSizes, 'breakpoint', 'px'),
+  ...toVariables(StyleFontSizes, 'font-size'),
+  '--font-default-size': FontSizes.medium,
   '--font-family-sans-serif': `Noto Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-  '--font-family-monospace:': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
+  '--font-family-monospace': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
+};
+
+const html: Emotion.CSSObject = {
+  fontFamily: 'var(--font-family-sans-serif)',
+  fontSize: 'var(--font-default-size)',
+  fontWeight: 'normal',
+  WebkitFontSmoothing: 'antialiased', // Antialiasing.
+  MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+  // Change from `box-sizing: content-box` so that `width`
+  // is not affected by `padding` or `border`.
+  boxSizing: 'border-box',
+  backgroundColor: Colors.dark
+};
+
+const body: Emotion.CSSObject = {
+  margin: 0, // Remove the margin in all browsers.
+  color: TextColors.text,
+  fill: TextColors.fill,
+  // Add support for document.body.requestFullScreen().
+  // Other elements, if background transparent, are not supported.
+  '&::backdrop': {
+    backgroundColor: Colors.grayDark
+  },
+  '@media print': {
+    backgroundColor: Colors.white
+  }
+};
+
+const etc: Emotion.CSSObject = {
+  a: {
+    textDecoration: 'none',
+    color: 'unset'
+  },
+  'strong, b': {
+    fontWeight: 700
+  }
+};
+
+const global: Emotion.CSSObject = {
+  html,
+  '*, *::before, *::after': {
+    boxSizing: 'inherit'
+  },
+  body,
+  ...etc
 };
 
 export const rootStyles: Emotion.CSSObject = {
-  ':root': cssVars
+  ':root': styleVariables,
+  ...global
 };

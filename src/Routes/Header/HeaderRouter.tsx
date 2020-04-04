@@ -1,10 +1,13 @@
 import Emotoin from '@emotion/core';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 
+import { Icon } from 'Components/Icon';
 import { Link, NavLink } from 'Components/Link';
 import { Text } from 'Components/Text';
 import { FlexView } from 'Components/View';
+import { Colors } from 'Styles/Theme';
 
 const css: Emotoin.CSSObject = {
   position: 'fixed',
@@ -15,26 +18,38 @@ const css: Emotoin.CSSObject = {
   top: 0
 };
 
-const Logo = () => (
-  <Link to="/">
-    <Text bold large>
-      Logo
-    </Text>
-  </Link>
-);
-const Navbar = () => (
-  <FlexView content="between" css={css} items="center" row>
-    <Logo />
-    <FlexView content="end" row>
-      <NavLink css={{ padding: '0 5px' }} to="/signup">
-        <Text bold>Sign Up</Text>
-      </NavLink>
-      <NavLink css={{ padding: '0 5px' }} to="/signin">
-        <Text bold>Sign In</Text>
-      </NavLink>
+const Logo = () => {
+  const [t] = useTranslation('header');
+
+  return (
+    <Link to="/">
+      <FlexView center row>
+        <Icon color={Colors.white} css={{ marginRight: 5 }} name="logo" />
+        <Text black large>
+          {t('logo')}
+        </Text>
+      </FlexView>
+    </Link>
+  );
+};
+
+const Navbar = () => {
+  const [t] = useTranslation('header');
+
+  return (
+    <FlexView content="between" css={css} items="center" row>
+      <Logo />
+      <FlexView content="end" row>
+        <NavLink css={{ padding: '0 5px' }} to="/signup">
+          <Text medium>{t('signUp')}</Text>
+        </NavLink>
+        <NavLink css={{ padding: '0 5px' }} to="/signin">
+          <Text medium>{t('signIn')}</Text>
+        </NavLink>
+      </FlexView>
     </FlexView>
-  </FlexView>
-);
+  );
+};
 
 export default () => (
   <Switch>

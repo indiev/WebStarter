@@ -1,10 +1,13 @@
-import Emotoin from '@emotion/core';
+import * as Emotion from '@emotion/core';
 import React from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLSpanElement>,
-  HTMLSpanElement
-> & {
+import { FontSizes, TextColors } from 'Styles/Theme';
+
+export type Props = (
+  | React.HTMLAttributes<HTMLSpanElement>
+  | React.LabelHTMLAttributes<HTMLLabelElement>
+) & {
+  as?: string;
   size?:
     | 'medium'
     | 'xx-small'
@@ -13,40 +16,65 @@ export type Props = React.DetailedHTMLProps<
     | 'large'
     | 'x-large'
     | 'xx-large';
-  weight?: 'thin' | 'regular' | 'bold';
+  weight?: 'light' | 'regular' | 'medium' | 'bold';
   xxSmall?: boolean;
   xSmall?: boolean;
   small?: boolean;
   large?: boolean;
   xLarge?: boolean;
   xxLarge?: boolean;
-  thin?: boolean;
+  xxxLarge?: boolean;
+  light?: boolean;
+  medium?: boolean;
   bold?: boolean;
+  black?: boolean;
+  monospace?: boolean;
 };
 
-const SizeStyle: { [key: string]: Emotoin.CSSObject } = {
-  'xx-small': { fontSize: 'var(--font-size-xx-small)' },
-  'x-small': { fontSize: 'var(--font-size-x-small)' },
-  small: { fontSize: 'var(--font-size-small)' },
-  medium: { fontSize: 'var(--font-size-medium)' },
-  large: { fontSize: 'var(--font-size-large)' },
-  'x-large': { fontSize: 'var(--font-size-x-large)' },
-  'xx-large': { fontSize: 'var(--font-size-xx-large)' }
+const SizeStyle: { [key: string]: Emotion.CSSObject } = {
+  'xx-small': { fontSize: FontSizes.xxSmall },
+  'x-small': { fontSize: FontSizes.xSmall },
+  small: { fontSize: FontSizes.small },
+  medium: { fontSize: FontSizes.medium },
+  large: { fontSize: FontSizes.large },
+  'x-large': { fontSize: FontSizes.xLarge },
+  'xx-large': { fontSize: FontSizes.xxLarge },
+  'xxx-large': { fontSize: FontSizes.xxxLarge }
 };
 
-const WeightStyle: { [key: string]: Emotoin.CSSObject } = {
+// light, regular, bold
+const WeightStyle: { [key: string]: Emotion.CSSObject } = {
   thin: {
+    fontWeight: 100
+  },
+  extraLight: {
     fontWeight: 200
   },
-  reqular: {
+  light: {
+    fontWeight: 300
+  },
+  regular: {
     fontWeight: 400
+  },
+  medium: {
+    fontWeight: 500
+  },
+  semiBold: {
+    fontWeight: 600
   },
   bold: {
     fontWeight: 700
+  },
+  extraBold: {
+    fontWeight: 800
+  },
+  black: {
+    fontWeight: 900
   }
 };
 
 export default ({
+  as = 'span',
   size,
   weight,
   xxSmall,
@@ -55,11 +83,16 @@ export default ({
   large,
   xLarge,
   xxLarge,
-  thin,
+  xxxLarge,
+  light,
+  medium,
   bold,
+  black,
+  monospace,
   ...props
 }: Props) => {
-  const css = {
+  const css: Emotion.CSSObject = {
+    color: TextColors.text,
     ...SizeStyle[
       size ||
         (xxSmall && 'xx-small') ||
@@ -68,10 +101,19 @@ export default ({
         (large && 'large') ||
         (xLarge && 'x-large') ||
         (xxLarge && 'xx-large') ||
+        (xxxLarge && 'xxx-large') ||
         'medium'
     ],
-    ...WeightStyle[weight || (thin && 'thin') || (bold && 'bold') || 'regular']
+    ...WeightStyle[
+      weight ||
+        (light && 'light') ||
+        (medium && 'medium') ||
+        (bold && 'bold') ||
+        (black && 'black') ||
+        'regular'
+    ],
+    ...(monospace && { fontFamily: 'var(--font-family-monospace)' })
   };
 
-  return <span css={css} {...props} />;
+  return Emotion.jsx(as, { css, ...props });
 };

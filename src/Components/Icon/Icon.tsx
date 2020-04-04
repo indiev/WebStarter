@@ -12,16 +12,12 @@ export type Props = React.DetailedHTMLProps<
   size?: number;
 };
 
-const IconMap: { [key: string]: React.FC } = {
-  ...Icons
-};
-
 const defaultCSS: Emotoin.CSSObject = {
   display: 'inline-flex'
 };
 
 export default ({ name, color, size, ...props }: Props) => {
-  const RenderIcon = IconMap[name];
+  const RenderIcon = Icons[name as keyof typeof Icons];
   const css: Emotoin.CSSObject = {
     ...defaultCSS,
     height: size || 24,
