@@ -2,9 +2,10 @@ import * as Emotion from '@emotion/core';
 import React, { forwardRef } from 'react';
 
 export type Props = React.HTMLAttributes<HTMLDivElement> & {
-  as?: string;
+  component?: string;
 };
 
 export default forwardRef<HTMLDivElement, Props>(
-  ({ as = 'div', ...props }: Props, ref) => Emotion.jsx(as, { ref, ...props })
+  ({ component = 'div', ...props }: Props, ref) =>
+    Emotion.jsx(component, { ref, ...props })
 );

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export type Props = React.DetailedHTMLProps<
+type Props = React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 >;
-
+export type ImageProps = Props;
 export default ({ alt, ...props }: Props) => <img alt={alt} {...props} />;
