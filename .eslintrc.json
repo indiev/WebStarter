@@ -1,7 +1,7 @@
 {
   "root": true,
   "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
-  "plugins": ["import", "react-hooks", "prettier"],
+  "plugins": ["react-hooks", "prettier"],
   "rules": {
     "no-param-reassign": ["error", { "props": false }],
     // "react/prefer-stateless-function": "off",
