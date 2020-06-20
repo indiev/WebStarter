@@ -74,8 +74,8 @@ export const StyleSizes = {
 };
 
 export const Colors = toGetVariables(StyleColors);
-export const Sizes = toGetVariables(StyleSizes);
-export const FontSizes = toGetVariables(StyleFontSizes);
+export const Sizes = toGetVariables(StyleSizes, 'breakpoint');
+export const FontSizes = toGetVariables(StyleFontSizes, 'font-size');
 
 const StyleTextColors = {
   text: Colors.white,
