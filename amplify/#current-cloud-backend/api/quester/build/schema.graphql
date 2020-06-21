@@ -1,0 +1,531 @@
+type Mutation {
+  voteForPost(input: ItemVoteInput): Post
+  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
+  createPost(input: CreatePostInput!, condition: ModelPostConditionInput): Post
+  updatePost(input: UpdatePostInput!, condition: ModelPostConditionInput): Post
+  deletePost(input: DeletePostInput!, condition: ModelPostConditionInput): Post
+  createComment(input: CreateCommentInput!, condition: ModelCommentConditionInput): Comment
+  updateComment(input: UpdateCommentInput!, condition: ModelCommentConditionInput): Comment
+  deleteComment(input: DeleteCommentInput!, condition: ModelCommentConditionInput): Comment
+  createImage(input: CreateImageInput!, condition: ModelImageConditionInput): Image
+  updateImage(input: UpdateImageInput!, condition: ModelImageConditionInput): Image
+  deleteImage(input: DeleteImageInput!, condition: ModelImageConditionInput): Image
+  createVote(input: CreateVoteInput!, condition: ModelVoteConditionInput): Vote
+  updateVote(input: UpdateVoteInput!, condition: ModelVoteConditionInput): Vote
+  deleteVote(input: DeleteVoteInput!, condition: ModelVoteConditionInput): Vote
+  createFollowing(input: CreateFollowingInput!, condition: ModelFollowingConditionInput): Following
+  updateFollowing(input: UpdateFollowingInput!, condition: ModelFollowingConditionInput): Following
+  deleteFollowing(input: DeleteFollowingInput!, condition: ModelFollowingConditionInput): Following
+}
+
+input ItemVoteInput {
+  type: VoteType!
+  id: ID!
+}
+
+type User @aws_iam @aws_cognito_user_pools {
+  id: ID!
+  username: String!
+  avatar: S3Object
+  posts: [Post!]!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Post @aws_iam @aws_cognito_user_pools {
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  title: String!
+  content: String!
+  author: String
+  images: [Image]
+  votes: Int
+  owner: String
+  comments(filter: ModelCommentFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCommentConnection @aws_iam
+}
+
+type Comment @aws_iam @aws_cognito_user_pools {
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  content: String!
+  createdBy: String!
+  votes: Int
+  post: Post @aws_iam
+}
+
+type Image @aws_iam @aws_cognito_user_pools {
+  id: ID!
+  file: S3Object!
+  fullsize: S3Info!
+  thumbnail: S3Info!
+  owner: String
+}
+
+type S3Info @aws_iam @aws_cognito_user_pools {
+  key: String!
+  width: Int!
+  height: Int!
+}
+
+type S3Object @aws_iam @aws_cognito_user_pools {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+type Vote {
+  id: ID!
+  postId: ID!
+  createdBy: ID!
+  createdAt: AWSDateTime!
+  vote: VoteType
+}
+
+type Following {
+  id: ID
+  followerId: ID!
+  followingId: ID!
+  createdAt: AWSDateTime!
+}
+
+input VoteInput {
+  type: VoteType!
+  id: ID!
+}
+
+enum VoteType {
+  up
+  down
+}
+
+input S3ObjectInput {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserConnection @aws_iam {
+  items: [User]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelUserFilterInput {
+  id: ModelIDInput
+  username: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+}
+
+type Query {
+  getVote(id: ID!): Vote
+  listVotes(filter: ModelVoteFilterInput, limit: Int, nextToken: String): ModelVoteConnection
+  getFollowing(id: ID!): Following
+  listFollowings(filter: ModelFollowingFilterInput, limit: Int, nextToken: String): ModelFollowingConnection
+  votesByUser(createdBy: ID, createdAt: ModelStringKeyConditionInput, sortDirection: ModelSortDirection, filter: ModelVoteFilterInput, limit: Int, nextToken: String): ModelVoteConnection
+  listFollowing(followerId: ID, createdAt: ModelStringKeyConditionInput, sortDirection: ModelSortDirection, filter: ModelFollowingFilterInput, limit: Int, nextToken: String): ModelFollowingConnection
+  getUser(id: ID!): User @aws_iam
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection @aws_iam
+  listPosts(filter: ModelPostFilterInput, limit: Int, nextToken: String): ModelPostConnection @aws_iam
+  getPost(id: ID!): Post @aws_iam
+  getComment(id: ID!): Comment @aws_iam
+  listComments(filter: ModelCommentFilterInput, limit: Int, nextToken: String): ModelCommentConnection @aws_iam
+  getImage(id: ID!): Image @aws_iam @aws_cognito_user_pools
+  listImages(filter: ModelImageFilterInput, limit: Int, nextToken: String): ModelImageConnection @aws_iam @aws_cognito_user_pools
+}
+
+input CreateUserInput {
+  id: ID
+  username: String!
+  avatar: S3ObjectInput
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input UpdateUserInput {
+  id: ID!
+  username: String
+  avatar: S3ObjectInput
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+input DeleteUserInput {
+  id: ID
+}
+
+input ModelUserConditionInput {
+  username: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelUserConditionInput]
+  or: [ModelUserConditionInput]
+  not: ModelUserConditionInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Subscription {
+  onCreateUser(id: String!): User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser(id: String!): User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser(id: String!): User @aws_subscribe(mutations: ["deleteUser"])
+  onCreatePost(owner: String!): Post @aws_subscribe(mutations: ["createPost"])
+  onUpdatePost(owner: String!): Post @aws_subscribe(mutations: ["updatePost"])
+  onDeletePost(owner: String!): Post @aws_subscribe(mutations: ["deletePost"])
+  onCreateComment(createdBy: String!): Comment @aws_subscribe(mutations: ["createComment"])
+  onUpdateComment(createdBy: String!): Comment @aws_subscribe(mutations: ["updateComment"])
+  onDeleteComment(createdBy: String!): Comment @aws_subscribe(mutations: ["deleteComment"])
+  onCreateImage(owner: String!): Image @aws_subscribe(mutations: ["createImage"])
+  onUpdateImage(owner: String!): Image @aws_subscribe(mutations: ["updateImage"])
+  onDeleteImage(owner: String!): Image @aws_subscribe(mutations: ["deleteImage"])
+  onCreateVote(createdBy: String!): Vote @aws_subscribe(mutations: ["createVote"])
+  onUpdateVote(createdBy: String!): Vote @aws_subscribe(mutations: ["updateVote"])
+  onDeleteVote(createdBy: String!): Vote @aws_subscribe(mutations: ["deleteVote"])
+  onCreateFollowing(createdBy: String!): Following @aws_subscribe(mutations: ["createFollowing"])
+  onUpdateFollowing(createdBy: String!): Following @aws_subscribe(mutations: ["updateFollowing"])
+  onDeleteFollowing(createdBy: String!): Following @aws_subscribe(mutations: ["deleteFollowing"])
+}
+
+type ModelPostConnection @aws_iam {
+  items: [Post]
+  nextToken: String
+}
+
+input ModelPostFilterInput {
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  title: ModelStringInput
+  content: ModelStringInput
+  author: ModelStringInput
+  votes: ModelIntInput
+  and: [ModelPostFilterInput]
+  or: [ModelPostFilterInput]
+  not: ModelPostFilterInput
+}
+
+input CreatePostInput {
+  id: ID
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  title: String!
+  content: String!
+  author: String
+  votes: Int
+}
+
+input UpdatePostInput {
+  id: ID!
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  title: String
+  content: String
+  author: String
+  votes: Int
+}
+
+input DeletePostInput {
+  id: ID
+}
+
+input ModelPostConditionInput {
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  title: ModelStringInput
+  content: ModelStringInput
+  author: ModelStringInput
+  votes: ModelIntInput
+  and: [ModelPostConditionInput]
+  or: [ModelPostConditionInput]
+  not: ModelPostConditionInput
+}
+
+type ModelCommentConnection @aws_iam {
+  items: [Comment]
+  nextToken: String
+}
+
+input ModelCommentFilterInput {
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  content: ModelStringInput
+  createdBy: ModelStringInput
+  votes: ModelIntInput
+  and: [ModelCommentFilterInput]
+  or: [ModelCommentFilterInput]
+  not: ModelCommentFilterInput
+}
+
+input CreateCommentInput {
+  id: ID
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  content: String!
+  createdBy: String!
+  votes: Int
+  commentPostId: ID
+}
+
+input UpdateCommentInput {
+  id: ID!
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  content: String
+  createdBy: String
+  votes: Int
+  commentPostId: ID
+}
+
+input DeleteCommentInput {
+  id: ID
+}
+
+input ModelCommentConditionInput {
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  content: ModelStringInput
+  votes: ModelIntInput
+  and: [ModelCommentConditionInput]
+  or: [ModelCommentConditionInput]
+  not: ModelCommentConditionInput
+}
+
+input S3InfoInput {
+  key: String!
+  width: Int!
+  height: Int!
+}
+
+type ModelImageConnection @aws_iam @aws_cognito_user_pools {
+  items: [Image]
+  nextToken: String
+}
+
+input ModelImageFilterInput {
+  id: ModelIDInput
+  and: [ModelImageFilterInput]
+  or: [ModelImageFilterInput]
+  not: ModelImageFilterInput
+}
+
+input CreateImageInput {
+  id: ID
+  file: S3ObjectInput!
+  fullsize: S3InfoInput!
+  thumbnail: S3InfoInput!
+}
+
+input UpdateImageInput {
+  id: ID!
+  file: S3ObjectInput
+  fullsize: S3InfoInput
+  thumbnail: S3InfoInput
+}
+
+input DeleteImageInput {
+  id: ID
+}
+
+input ModelImageConditionInput {
+  and: [ModelImageConditionInput]
+  or: [ModelImageConditionInput]
+  not: ModelImageConditionInput
+}
+
+type ModelVoteConnection {
+  items: [Vote]
+  nextToken: String
+}
+
+input ModelVoteTypeInput {
+  eq: VoteType
+  ne: VoteType
+}
+
+input ModelVoteFilterInput {
+  id: ModelIDInput
+  postId: ModelIDInput
+  createdBy: ModelIDInput
+  createdAt: ModelStringInput
+  vote: ModelVoteTypeInput
+  and: [ModelVoteFilterInput]
+  or: [ModelVoteFilterInput]
+  not: ModelVoteFilterInput
+}
+
+input CreateVoteInput {
+  id: ID
+  postId: ID!
+  createdBy: ID!
+  createdAt: AWSDateTime!
+  vote: VoteType
+}
+
+input UpdateVoteInput {
+  id: ID!
+  postId: ID
+  createdBy: ID
+  createdAt: AWSDateTime
+  vote: VoteType
+}
+
+input DeleteVoteInput {
+  id: ID
+}
+
+input ModelVoteConditionInput {
+  postId: ModelIDInput
+  createdAt: ModelStringInput
+  vote: ModelVoteTypeInput
+  and: [ModelVoteConditionInput]
+  or: [ModelVoteConditionInput]
+  not: ModelVoteConditionInput
+}
+
+type ModelFollowingConnection {
+  items: [Following]
+  nextToken: String
+}
+
+input ModelFollowingFilterInput {
+  id: ModelIDInput
+  followerId: ModelIDInput
+  followingId: ModelIDInput
+  createdAt: ModelStringInput
+  and: [ModelFollowingFilterInput]
+  or: [ModelFollowingFilterInput]
+  not: ModelFollowingFilterInput
+}
+
+input CreateFollowingInput {
+  id: ID
+  followerId: ID!
+  followingId: ID!
+  createdAt: AWSDateTime!
+}
+
+input UpdateFollowingInput {
+  id: ID!
+  followerId: ID
+  followingId: ID
+  createdAt: AWSDateTime
+}
+
+input DeleteFollowingInput {
+  id: ID
+}
+
+input ModelFollowingConditionInput {
+  followerId: ModelIDInput
+  followingId: ModelIDInput
+  createdAt: ModelStringInput
+  and: [ModelFollowingConditionInput]
+  or: [ModelFollowingConditionInput]
+  not: ModelFollowingConditionInput
+}
+
+input ModelStringKeyConditionInput {
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  between: [String]
+  beginsWith: String
+}

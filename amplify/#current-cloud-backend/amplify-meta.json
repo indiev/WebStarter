@@ -1,0 +1,124 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-quester-dev-33931-authRole",
+			"UnauthRoleArn": "arn:aws:iam::630055435301:role/amplify-quester-dev-33931-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::630055435301:role/amplify-quester-dev-33931-authRole",
+			"Region": "ap-northeast-2",
+			"DeploymentBucketName": "amplify-quester-dev-33931-deployment",
+			"UnauthRoleName": "amplify-quester-dev-33931-unauthRole",
+			"StackName": "amplify-quester-dev-33931",
+			"StackId": "arn:aws:cloudformation:ap-northeast-2:630055435301:stack/amplify-quester-dev-33931/7276c2a0-7f48-11ea-90b9-022ba4b65eea",
+			"AmplifyAppId": "dfo07kktxgyne"
+		}
+	},
+	"function": {
+		"questerapi": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "quester4a6ae59b",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "quester",
+					"attributes": [
+						"GraphQLAPIIdOutput",
+						"GraphQLAPIEndpointOutput"
+					]
+				}
+			],
+			"lastBuildTimeStamp": "2020-04-20T05:12:59.858Z",
+			"lastPackageTimeStamp": "2020-04-20T05:12:59.896Z",
+			"distZipFilename": "questerapi-6742585474794d4f6a59-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-quester-dev-33931-deployment/amplify-cfn-templates/function/questerapi-cloudformation-template.json",
+				"logicalId": "functionquesterapi"
+			},
+			"lastPushTimeStamp": "2020-04-25T14:56:25.302Z",
+			"output": {
+				"Region": "ap-northeast-2",
+				"CloudWatchEventRule": "amplify-quester-dev-33931-function-CloudWatchEvent-1GB2X1O8GHD1W",
+				"Arn": "arn:aws:lambda:ap-northeast-2:630055435301:function:questerapi-dev",
+				"Name": "questerapi-dev",
+				"LambdaExecutionRole": "questerLambdaRole7a31cc82-dev"
+			},
+			"lastPushDirHash": "PkpjL7XaNK7SfTdr4mtu3wcdROA="
+		}
+	},
+	"auth": {
+		"quester4a6ae59b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-quester-dev-33931-deployment/amplify-cfn-templates/auth/quester4a6ae59b-cloudformation-template.yml",
+				"logicalId": "authquester4a6ae59b"
+			},
+			"lastPushTimeStamp": "2020-04-25T14:56:25.309Z",
+			"output": {
+				"AppClientSecret": "jqb2be5anr14sjgi8hhkfds9otak6i9ght9ca2k1qsb9r0h2578",
+				"UserPoolId": "ap-northeast-2_6We96vE6C",
+				"AppClientIDWeb": "786nfu4mf9psheej31as80okjb",
+				"AppClientID": "190vibgo1jha7shk9ju33lamti",
+				"IdentityPoolId": "ap-northeast-2:cfc91cdb-2e7d-4d94-9812-ee555ba41ad5",
+				"IdentityPoolName": "quester4a6ae59b_identitypool_4a6ae59b__dev",
+				"UserPoolName": "quester4a6ae59b_userpool_4a6ae59b"
+			},
+			"lastPushDirHash": "8W/E8hDT6gW+wxvhEZ6sOWP79KI="
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-quester-dev-33931-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2020-04-25T14:56:25.311Z",
+			"output": {
+				"S3BucketSecureURL": "https://quster-dev-hostingbucket-dev.s3.amazonaws.com",
+				"WebsiteURL": "http://quster-dev-hostingbucket-dev.s3-website.ap-northeast-2.amazonaws.com",
+				"Region": "ap-northeast-2",
+				"HostingBucketName": "quster-dev-hostingbucket-dev"
+			},
+			"lastPushDirHash": "MLO6yhaoQkZFpgnp1fbiQORMoGQ="
+		}
+	},
+	"api": {
+		"quester": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [
+						{
+							"authenticationType": "AWS_IAM"
+						}
+					],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authquester4a6ae59b"
+						}
+					}
+				},
+				"GraphQLAPIIdOutput": "5apca6v42rfpdanqvvurxkojry",
+				"GraphQLAPIEndpointOutput": "https://rnphusozfrfajls5w7xjd5p5va.appsync-api.ap-northeast-2.amazonaws.com/graphql"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-quester-dev-33931-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apiquester"
+			},
+			"lastPushTimeStamp": "2020-04-25T14:56:27.603Z",
+			"lastPushDirHash": "H0YQT+xcIno/1iVirYG/6veDFjw="
+		}
+	}
+}
