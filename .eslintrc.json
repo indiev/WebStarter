@@ -3,13 +3,17 @@
   "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
   "plugins": ["react-hooks", "prettier"],
   "rules": {
+    "camelcase": "off",
+    "consistent-return": "off",
+    "no-unused-vars": "warn",
     "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": "off",
     // "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "react/button-has-type": "off",
     "react/jsx-sort-props": [
       "warn",

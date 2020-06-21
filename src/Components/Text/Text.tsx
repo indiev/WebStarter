@@ -7,7 +7,7 @@ export type Props = (
   | React.HTMLAttributes<HTMLSpanElement>
   | React.LabelHTMLAttributes<HTMLLabelElement>
 ) & {
-  as?: string;
+  component?: string;
   size?:
     | 'medium'
     | 'xx-small'
@@ -74,7 +74,7 @@ const WeightStyle: { [key: string]: Emotion.CSSObject } = {
 };
 
 export default ({
-  as = 'span',
+  component = 'span',
   size,
   weight,
   xxSmall,
@@ -115,5 +115,5 @@ export default ({
     ...(monospace && { fontFamily: 'var(--font-family-monospace)' })
   };
 
-  return Emotion.jsx(as, { css, ...props });
+  return Emotion.jsx(component, { css, ...props });
 };

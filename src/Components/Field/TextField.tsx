@@ -7,12 +7,14 @@ import Text from 'Components/Text/Text';
 import { FlexView } from 'Components/View';
 import { Colors, FontSizes } from 'Styles/Theme';
 
-export type Props = InputProps & {
+type Props = InputProps & {
   row?: boolean;
   label?: boolean;
   helper?: string;
   error?: string;
 };
+
+export type TextFieldProps = Props;
 
 export function hasValue(value: any) {
   return value != null && !(Array.isArray(value) && value.length === 0);
@@ -105,7 +107,7 @@ export default React.forwardRef<HTMLInputElement, Props>(
       <FlexView>
         <FlexView css={wrapperCSS} row={row}>
           {label && name && (
-            <Text as="label" css={labelCSS} htmlFor={name}>
+            <Text component="label" css={labelCSS} htmlFor={name}>
               {`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
             </Text>
           )}

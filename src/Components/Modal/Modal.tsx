@@ -1,5 +1,5 @@
 import { CSSObject } from '@emotion/core';
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 
 import { FlexView, View } from 'Components/View';
 
@@ -10,7 +10,17 @@ type Props = {
 };
 
 export default ({ visible, onDismiss, children }: Props) => {
-  useEffect(() => {
+  // useLayoutEffect(() => {
+  //   // Get original body overflow
+  //   const originalStyle = window.getComputedStyle(document.body).overflow;
+  //   // Prevent scrolling on mount
+  //   document.body.style.overflow = 'hidden';
+  //   // Re-enable scrolling when component unmounts
+  //   return () => {
+  //     document.body.style.overflow = originalStyle;
+  //   };
+  // }, []); // Empty array ensures effect is only run on mount and unmount
+  useLayoutEffect(() => {
     if (visible) {
       document.body.style.setProperty('overflow', 'hidden');
     } else {

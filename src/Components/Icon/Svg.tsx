@@ -35,7 +35,7 @@ export const Svg = ({
   };
 
   return (
-    <View as="span" css={viewCss} style={styles} onClick={onClick}>
+    <View component="span" css={viewCss} style={styles} onClick={onClick}>
       <svg
         css={{
           display: 'block',
