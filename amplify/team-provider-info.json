@@ -1,0 +1,33 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-quester-dev-33931-authRole",
+            "UnauthRoleArn": "arn:aws:iam::630055435301:role/amplify-quester-dev-33931-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::630055435301:role/amplify-quester-dev-33931-authRole",
+            "Region": "ap-northeast-2",
+            "DeploymentBucketName": "amplify-quester-dev-33931-deployment",
+            "UnauthRoleName": "amplify-quester-dev-33931-unauthRole",
+            "StackName": "amplify-quester-dev-33931",
+            "StackId": "arn:aws:cloudformation:ap-northeast-2:630055435301:stack/amplify-quester-dev-33931/7276c2a0-7f48-11ea-90b9-022ba4b65eea",
+            "AmplifyAppId": "dfo07kktxgyne"
+        },
+        "categories": {
+            "auth": {
+                "quester4a6ae59b": {}
+            }
+        }
+    },
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-quester-test-34158-authRole",
+            "UnauthRoleArn": "arn:aws:iam::630055435301:role/amplify-quester-test-34158-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::630055435301:role/amplify-quester-test-34158-authRole",
+            "Region": "ap-northeast-2",
+            "DeploymentBucketName": "amplify-quester-test-34158-deployment",
+            "UnauthRoleName": "amplify-quester-test-34158-unauthRole",
+            "StackName": "amplify-quester-test-34158",
+            "StackId": "arn:aws:cloudformation:ap-northeast-2:630055435301:stack/amplify-quester-test-34158/c9e08990-7f48-11ea-bb9e-0689b5dc6f6c",
+            "AmplifyAppId": "dfo07kktxgyne"
+        }
+    }
+}

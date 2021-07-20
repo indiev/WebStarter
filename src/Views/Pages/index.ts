@@ -1,3 +1,6 @@
+import ConfirmSignUp from './ConfirmSignUp';
 import Main from './Main';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
-export default { Main };
+export { ConfirmSignUp, Main, SignIn, SignUp };
