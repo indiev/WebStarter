@@ -1,0 +1,182 @@
+type Mutation {
+  voteForPost(input: ItemVoteInput): Post @function(name: "questerapi-${env}")
+}
+
+input ItemVoteInput {
+  type: VoteType!
+  id: ID!
+}
+
+type User
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "id", operations: [create, update, delete] }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  username: String!
+  avatar: S3Object
+  posts: [Post!]!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Post
+  @model
+  @key(name: "byAuthor", fields: ["author", "createdAt"])
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, update, delete] }
+      { allow: private, provider: iam, operations: [read] }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  title: String!
+  content: String!
+  author: String
+  images: [Image]
+  comments: [Comment] @connection(name: "PostComments")
+  votes: Int
+}
+
+# type Post @model @auth(rules: [{ allow: owner, ownerField: "authorId" }]) {
+#   id: ID!
+#   author: User @connection(name: "UserPosts", keyField: "authorId")
+#   authorId: String
+#   title: String!
+#   content: String!
+#   createdAt: AWSDateTime!
+#   updatedAt: AWSDateTime!
+#   photos: [Photo] @connection(name: "PostPhotos")
+#   comments: [Comment] @connection(name: "PostComments", sortField: "createdAt")
+#   likes: [PostVote!]!
+# }
+
+type Comment
+  @model
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "createdBy"
+        operations: [create, update, delete]
+      }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  content: String!
+  createdBy: String!
+  votes: Int
+  post: Post @connection(name: "PostComments")
+}
+
+# type Comment
+#   @model
+#   @auth(
+#     rules: [
+#       { allow: owner }
+#       { allow: public, provider: iam, operations: [read] }
+#     ]
+#   ) {
+#   id: ID!
+#   content: String!
+#   createdAt: AWSDateTime!
+#   updatedAt: AWSDateTime!
+#   post: Post @connection(name: "PostComments")
+# }
+
+type Image
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  file: S3Object!
+  fullsize: S3Info!
+  thumbnail: S3Info!
+}
+
+type S3Info {
+  key: String!
+  width: Int!
+  height: Int!
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+type Vote
+  @model
+  @key(
+    name: "byUser"
+    fields: ["createdBy", "createdAt"]
+    queryField: "votesByUser"
+  )
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "createdBy"
+        operations: [create, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  postId: ID!
+  createdBy: ID!
+  createdAt: AWSDateTime!
+  vote: VoteType
+}
+
+type Following
+  @model
+  @key(
+    name: "followerId"
+    fields: ["followerId", "createdAt"]
+    queryField: "listFollowing"
+  )
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "createdBy"
+        operations: [create, update, delete]
+      }
+    ]
+  ) {
+  id: ID
+  followerId: ID!
+  followingId: ID!
+  createdAt: AWSDateTime!
+}
+
+# type PostVote
+#   @model
+#   @auth(rules: [{ allow: owner, operations: [create, read, delete] }]) {
+#   id: ID!
+#   post: Post!
+# }
+
+input VoteInput {
+  type: VoteType!
+  id: ID!
+}
+
+enum VoteType {
+  up
+  down
+}

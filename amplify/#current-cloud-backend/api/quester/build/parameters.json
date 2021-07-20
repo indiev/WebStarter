@@ -1,0 +1,20 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "quester",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authquester4a6ae59b",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-quester-dev-33931-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/848485cb7dae34683b46ca63cc40288eb8fa266b"
+}

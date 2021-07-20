@@ -1,0 +1,20 @@
+{
+    "permissions": {
+        "auth": {
+            "quester4a6ae59b": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "api": {
+            "quester": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}
