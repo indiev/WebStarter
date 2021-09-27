@@ -1,26 +1,8 @@
 {
-  "editor.formatOnSave": true,
-  "[html]": {
-    "editor.formatOnSave": false
-  },
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.formatOnSave": false
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "javascript.format.enable": false,
-  "typescript.format.enable": false,
-  "eslint.packageManager": "yarn",
   "search.exclude": {
     "**/build/**": true,
-    "**/node_modules/**": true
+    "**/node_modules/**": true,
+    "yarn.lock": true,
   },
   "eslint.validate": [
     "javascript",
@@ -30,5 +12,12 @@
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.suggestionActions.enabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
   }
 }
