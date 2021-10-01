@@ -1,5 +1,5 @@
-import Emotion from '@emotion/core';
-import React, { useState } from 'react';
+import Emotion from '@emotion/react';
+import { forwardRef, useState } from 'react';
 
 import Input, { Props as InputProps } from './Input';
 
@@ -24,7 +24,7 @@ export function isFilled(obj?: { value: any }) {
   return obj && hasValue(obj.value) && obj.value !== '';
 }
 
-export default React.forwardRef<HTMLInputElement, Props>(
+export default forwardRef<HTMLInputElement, Props>(
   (
     { type = 'text', name, row, label, helper, error, ...props }: Props,
     ref

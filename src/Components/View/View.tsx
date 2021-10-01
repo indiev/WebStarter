@@ -1,7 +1,7 @@
-import * as Emotion from '@emotion/core';
-import React, { forwardRef } from 'react';
+import * as Emotion from '@emotion/react';
+import { forwardRef, HTMLAttributes } from 'react';
 
-export type Props = React.HTMLAttributes<HTMLDivElement> & {
+export type Props = HTMLAttributes<HTMLDivElement> & {
   component?: string;
 };
 

@@ -1,17 +1,21 @@
 {
   "root": true,
-  "extends": ["airbnb", "react-app", "react-app/jest", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb", "react-app", "react-app/jest", "plugin:react/jsx-runtime", "prettier"],
+  "plugins": ["prettier", "@emotion"],
   "rules": {
+    "@emotion/no-vanilla": "error",
+    "@emotion/import-from-emotion": "error",
     "camelcase": "off",
     "consistent-return": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-underscore-dangle": "off",
-    // "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-fragments": "off",
     "react/jsx-sort-props": [
       "warn",
       {
@@ -22,8 +26,6 @@
       }
     ],
     "react/prop-types": "off",
-    "react/require-default-props": "off",
-    "import/prefer-default-export": "off",
     "import/extensions": ["error", "never"],
     "import/no-anonymous-default-export": "off",
     "import/order": [

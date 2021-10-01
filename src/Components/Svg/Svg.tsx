@@ -1,7 +1,7 @@
-import Emotoin from '@emotion/core';
-import React from 'react';
+import Emotoin from '@emotion/react';
+import { SVGProps } from 'react';
 
-type Props = React.SVGProps<SVGSVGElement>;
+type Props = SVGProps<SVGSVGElement>;
 export type SvgProps = Props;
 
 const DEAFAULT_VIEW_BOX_SIZE = 24;

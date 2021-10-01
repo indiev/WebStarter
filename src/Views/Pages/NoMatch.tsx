@@ -1,5 +1,3 @@
-import React from 'react';
-
 import P from 'Components/Text/Paragraph';
 import Container from 'Components/View/Container';
 

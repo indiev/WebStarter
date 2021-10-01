@@ -1,7 +1,7 @@
-import React from 'react';
+import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+export type Props = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >;
 

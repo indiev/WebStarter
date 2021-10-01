@@ -1,5 +1,5 @@
-import Emotoin from '@emotion/core';
-import React, { forwardRef } from 'react';
+import Emotoin from '@emotion/react';
+import { forwardRef } from 'react';
 
 import View, { Props as ViewProps } from './View';
 

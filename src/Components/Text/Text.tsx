@@ -1,11 +1,11 @@
-import * as Emotion from '@emotion/core';
-import React from 'react';
+import * as Emotion from '@emotion/react';
+import { HTMLAttributes, LabelHTMLAttributes } from 'react';
 
 import { FontSizes, TextColors } from 'Styles/Theme';
 
 export type Props = (
-  | React.HTMLAttributes<HTMLSpanElement>
-  | React.LabelHTMLAttributes<HTMLLabelElement>
+  | HTMLAttributes<HTMLSpanElement>
+  | LabelHTMLAttributes<HTMLLabelElement>
 ) & {
   component?: string;
   size?:

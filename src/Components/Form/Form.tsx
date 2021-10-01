@@ -1,7 +1,7 @@
-import React from 'react';
+import { DetailedHTMLProps, FormHTMLAttributes } from 'react';
 
-type Props = React.DetailedHTMLProps<
-  React.FormHTMLAttributes<HTMLFormElement>,
+type Props = DetailedHTMLProps<
+  FormHTMLAttributes<HTMLFormElement>,
   HTMLFormElement
 >;
 

@@ -1,9 +1,9 @@
-import Emotion from '@emotion/core';
-import React from 'react';
+import Emotion from '@emotion/react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 
 import { FontSizes, TextColors } from 'Styles/Theme';
 
-export type Props = React.InputHTMLAttributes<HTMLInputElement>;
+export type Props = InputHTMLAttributes<HTMLInputElement>;
 
 const css: Emotion.CSSObject = {
   border: 'none',
@@ -31,6 +31,6 @@ const css: Emotion.CSSObject = {
   }
 };
 
-export default React.forwardRef<HTMLInputElement, Props>((props, ref) => (
+export default forwardRef<HTMLInputElement, Props>((props, ref) => (
   <input ref={ref} css={css} {...props} />
 ));

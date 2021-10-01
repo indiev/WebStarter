@@ -1,10 +1,10 @@
-import Emotoin from '@emotion/core';
-import React from 'react';
+import Emotoin from '@emotion/react';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import * as Icons from 'Assets/Images/Icons';
 
-export type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLSpanElement>,
+export type Props = DetailedHTMLProps<
+  HTMLAttributes<HTMLSpanElement>,
   HTMLSpanElement
 > & {
   name: string;

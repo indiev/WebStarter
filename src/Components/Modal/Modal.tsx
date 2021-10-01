@@ -1,12 +1,12 @@
-import { CSSObject } from '@emotion/core';
-import React, { useLayoutEffect } from 'react';
+import { CSSObject } from '@emotion/react';
+import { ReactNode, useLayoutEffect } from 'react';
 
 import { FlexView, View } from 'Components/View';
 
 type Props = {
   visible?: boolean;
   onDismiss?: () => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export default ({ visible, onDismiss, children }: Props) => {

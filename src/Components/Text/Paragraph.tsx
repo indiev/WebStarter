@@ -1,7 +1,7 @@
-import React from 'react';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLParagraphElement>,
+export type Props = DetailedHTMLProps<
+  HTMLAttributes<HTMLParagraphElement>,
   HTMLParagraphElement
 >;
 

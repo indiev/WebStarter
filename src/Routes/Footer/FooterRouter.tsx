@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/core';
+import Emotoin from '@emotion/react';
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -9,7 +9,7 @@ import {
   Favorite as FavoriteIcon,
   Restore as RestoreIcon
 } from '@material-ui/icons';
-import React from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
 import View from 'Components/View/View';
@@ -28,10 +28,10 @@ const css: Emotoin.CSSObject = {
 
 const Navbar = () => <View css={css}>Footer</View>;
 const Navigation = () => {
-  const [value, setValue] = React.useState('posts');
+  const [value, setValue] = useState('posts');
   const history = useHistory();
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+  const handleChange = (event: ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
     history.push(`/${newValue}`);
   };

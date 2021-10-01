@@ -1,8 +1,5 @@
-import React from 'react';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-export type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLElement>,
-  HTMLElement
->;
+export type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 export default (props: Props) => <code {...props} />;

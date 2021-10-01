@@ -1,5 +1,4 @@
-import { Global } from '@emotion/core';
-import React from 'react';
+import { Global } from '@emotion/react';
 
 import { rootStyles } from 'Styles/Theme';
 import 'Styles/index.scss';

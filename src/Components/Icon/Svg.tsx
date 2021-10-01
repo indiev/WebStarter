@@ -1,15 +1,15 @@
-import { CSSObject } from '@emotion/core';
-import React from 'react';
+import { CSSObject } from '@emotion/react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 import { View } from 'Components/View';
 
-type Props = React.HTMLAttributes<SVGElement> & {
+type Props = HTMLAttributes<SVGElement> & {
   width?: number | string;
   height?: number | string;
   boxWidth?: number;
   boxHeight?: number;
   color?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   viewCss?: CSSObject;
   onClick?: () => void;
 };

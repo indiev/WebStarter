@@ -1,5 +1,4 @@
-import Emotoin from '@emotion/core';
-import React from 'react';
+import Emotoin from '@emotion/react';
 
 import Button, { Props as ButtonProps } from './Button';
 

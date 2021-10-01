@@ -1,4 +1,4 @@
-import Emotion from '@emotion/core';
+import Emotion from '@emotion/react';
 
 import { toGetVariables, toVariables } from 'Utils/styles';
 
