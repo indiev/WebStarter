@@ -7,7 +7,7 @@ export default () => {
     <Container maxWidth={false}>
       <Box>
         <Typography>{t('title')}</Typography>
-        <Button>Wirte</Button>
+        <Button>Write</Button>
       </Box>
     </Container>
   );
