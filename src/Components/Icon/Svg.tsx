@@ -11,10 +11,9 @@ type Props = HTMLAttributes<SVGElement> & {
   color?: string;
   children: ReactNode;
   viewCss?: CSSObject;
-  onClick?: () => void;
 };
 
-export const Svg = ({
+export default ({
   width,
   height,
   boxWidth = 24,
@@ -35,7 +34,7 @@ export const Svg = ({
   };
 
   return (
-    <View component="span" css={viewCss} style={styles} onClick={onClick}>
+    <View component="span" css={viewCss} style={styles}>
       <svg
         css={{
           display: 'block',
@@ -43,6 +42,7 @@ export const Svg = ({
           height: '100%',
           fill: color
         }}
+        focusable={false}
         pointerEvents="none"
         viewBox={`0 0 ${boxWidth} ${boxHeight}`}
         {...props}

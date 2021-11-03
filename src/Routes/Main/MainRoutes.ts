@@ -12,6 +12,18 @@ export const SiginIn = {
   exact: true
 };
 
+export const Vaccine = {
+  path: '/vaccine',
+  component: loadable(() => import('Views/Pages/Vaccine')),
+  exact: true
+};
+
+export const Antibody = {
+  path: '/antibody',
+  component: loadable(() => import('Views/Pages/Antibody')),
+  exact: true
+};
+
 export const Main = {
   path: '/',
   component: loadable(() => import('Views/Pages/Main')),

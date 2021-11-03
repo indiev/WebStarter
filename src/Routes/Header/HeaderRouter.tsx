@@ -1,6 +1,8 @@
 import Emotoin from '@emotion/react';
+import { AppBar, Box, Button, Tab, Tabs } from '@mui/material';
+import { SyntheticEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { Icon } from 'Components/Icon';
 import { Link, NavLink } from 'Components/Link';
@@ -9,11 +11,11 @@ import { FlexView } from 'Components/View';
 import { Colors } from 'Styles/Theme';
 
 const css: Emotoin.CSSObject = {
-  position: 'fixed',
+  // position: 'fixed',
   width: '100%',
   height: '3rem',
   padding: '0 1rem',
-  backgroundColor: 'var(--gray-dark)',
+  // backgroundColor: 'var(--gray-dark)',
   top: 0
 };
 
@@ -22,31 +24,72 @@ const Logo = () => {
 
   return (
     <Link to="/">
-      <FlexView center row>
-        <Icon color={Colors.white} css={{ marginRight: 5 }} name="logo" />
-        <Text black large>
-          {t('logo')}
-        </Text>
-      </FlexView>
+      <Icon
+        color={Colors.white}
+        css={{ marginRight: 70, height: 12 }}
+        name="logo"
+      />
     </Link>
   );
 };
 
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`
+  };
+}
+
 const Navbar = () => {
   const [t] = useTranslation('header');
+  const history = useHistory();
+  const { pathname } = history.location;
+  const [selectedTab, setSelectedTab] = useState(
+    // eslint-disable-next-line no-nested-ternary
+    pathname === '/vaccine' ? 1 : pathname === '/antibody' ? 3 : 0
+  );
+
+  const handleChangeTab = (
+    event: SyntheticEvent<Element, Event>,
+    value: number
+  ) => {
+    setSelectedTab(value);
+    if (value === 1) {
+      history.push(`/vaccine`);
+    } else if (value === 3) {
+      history.push(`/antibody`);
+    } else {
+      history.push(`/`);
+    }
+  };
 
   return (
-    <FlexView content="between" css={css} items="center" row>
-      <Logo />
-      <FlexView content="end" row>
-        <NavLink css={{ padding: '0 5px' }} to="/signup">
-          <Text medium>{t('signUp')}</Text>
-        </NavLink>
-        <NavLink css={{ padding: '0 5px' }} to="/signin">
-          <Text medium>{t('signIn')}</Text>
-        </NavLink>
-      </FlexView>
-    </FlexView>
+    <Box sx={{ flexGrow: 1, bgcolor: 'background.white' }}>
+      <AppBar color="inherit" position="static">
+        <FlexView content="between" css={css} items="center" row>
+          <Logo />
+          <Tabs
+            aria-label="basic tabs example"
+            // indicatorColor={undefined}
+            sx={{ flex: 1 }}
+            value={selectedTab}
+            onChange={handleChangeTab}
+          >
+            <Tab label="홈" {...a11yProps(0)} />
+            <Tab label="백신 접종자" {...a11yProps(1)} />
+            <Tab label="PCR 검사자" {...a11yProps(2)} />
+            <Tab label="항체 보유자" {...a11yProps(3)} />
+            <Tab label="완치자" {...a11yProps(4)} />
+          </Tabs>
+          <FlexView items="center" row>
+            <Text style={{ marginRight: 20 }}>일신산업(주)</Text>
+            <Button sx={{ borderRadius: 10 }} variant="outlined">
+              로그아웃
+            </Button>
+          </FlexView>
+        </FlexView>
+      </AppBar>
+    </Box>
   );
 };
 

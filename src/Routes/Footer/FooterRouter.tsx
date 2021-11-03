@@ -1,14 +1,10 @@
 import Emotoin from '@emotion/react';
 import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Box
-} from '@material-ui/core';
-import {
   AccountCircle as AccountCircleIcon,
   Favorite as FavoriteIcon,
   Restore as RestoreIcon
-} from '@material-ui/icons';
+} from '@mui/icons-material';
+import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
