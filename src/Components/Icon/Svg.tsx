@@ -43,6 +43,7 @@ export const Svg = ({
           height: '100%',
           fill: color
         }}
+        focusable={false}
         pointerEvents="none"
         viewBox={`0 0 ${boxWidth} ${boxHeight}`}
         {...props}

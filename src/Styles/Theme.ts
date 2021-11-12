@@ -78,7 +78,7 @@ export const Sizes = toGetVariables(StyleSizes, 'breakpoint');
 export const FontSizes = toGetVariables(StyleFontSizes, 'font-size');
 
 const StyleTextColors = {
-  text: Colors.white,
+  text: Colors.dark,
   textLight: Colors.grayLight,
   textDark: Colors.grayDark,
   fill: Colors.white
@@ -105,7 +105,7 @@ const html: Emotion.CSSObject = {
   // Change from `box-sizing: content-box` so that `width`
   // is not affected by `padding` or `border`.
   boxSizing: 'border-box',
-  backgroundColor: Colors.dark
+  backgroundColor: Colors.white
 };
 
 const body: Emotion.CSSObject = {
