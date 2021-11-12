@@ -2,6 +2,7 @@ import Emotoin from '@emotion/react';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import * as Icons from 'Assets/Images/Icons';
+import { TextColors } from 'Styles/Theme';
 
 export type Props = DetailedHTMLProps<
   HTMLAttributes<HTMLSpanElement>,
@@ -21,7 +22,7 @@ export default ({ name, color, size, ...props }: Props) => {
   const css: Emotoin.CSSObject = {
     ...defaultCSS,
     height: size || 24,
-    ...(color && { fill: color })
+    fill: color || TextColors.text
   };
 
   return (

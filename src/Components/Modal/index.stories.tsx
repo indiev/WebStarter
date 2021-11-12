@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import Modal from './Modal';
 
@@ -12,7 +12,7 @@ export const Modals = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <>
+    <Fragment>
       <FlexView>
         <Button
           css={{ backgroundColor: Colors.danger, padding: 10 }}
@@ -28,6 +28,6 @@ export const Modals = () => {
           test
         </Modal>
       </FlexView>
-    </>
+    </Fragment>
   );
 };

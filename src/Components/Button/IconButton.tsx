@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 
 import Button, { Props as ButtonProps } from './Button';
 
@@ -8,7 +8,7 @@ export type Props = ButtonProps & {
   name: string;
 };
 
-const css: Emotoin.CSSObject = {
+const css: CSSObject = {
   padding: '0.3rem',
   margin: '-0.3rem'
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 type CreateContext<A> = readonly [
   () => A,
-  React.ProviderExoticComponent<React.ProviderProps<A | undefined>>,
+  React.ProviderExoticComponent<React.ProviderProps<A | undefined>>
 ];
 
 export const createContext = <A>(): CreateContext<A> => {
