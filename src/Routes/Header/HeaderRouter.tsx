@@ -52,6 +52,8 @@ const Navbar = () => {
 
 export default () => (
   <Switch>
-    <Route component={Navbar} />
+    <Route>
+      <Navbar />
+    </Route>
   </Switch>
 );

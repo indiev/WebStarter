@@ -26,6 +26,7 @@ export type Props = (
   xxxLarge?: boolean;
   light?: boolean;
   medium?: boolean;
+  semiBold?: boolean;
   bold?: boolean;
   black?: boolean;
   monospace?: boolean;
@@ -87,6 +88,7 @@ export default ({
   xxxLarge,
   light,
   medium,
+  semiBold,
   bold,
   black,
   monospace,
@@ -110,6 +112,7 @@ export default ({
       weight ||
         (light && 'light') ||
         (medium && 'medium') ||
+        (semiBold && 'semiBold') ||
         (bold && 'bold') ||
         (black && 'black') ||
         'regular'
