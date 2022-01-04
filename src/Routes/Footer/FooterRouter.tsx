@@ -32,6 +32,8 @@ const Navigation = () => {
 
 export default () => (
   <Switch>
-    <Route component={Navigation} />
+    <Route>
+      <Navigation />
+    </Route>
   </Switch>
 );
