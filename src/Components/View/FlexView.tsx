@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import Emotion from '@emotion/react';
 import { forwardRef } from 'react';
 
 import View, { Props as ViewProps } from './View';
@@ -55,11 +55,11 @@ export default forwardRef<HTMLDivElement, Props>(
     }: Props,
     ref
   ) => {
-    const defaultCSS: Emotoin.CSSObject = {
+    const defaultCSS: Emotion.CSSObject = {
       display: !grid ? 'flex' : 'grid'
     };
 
-    const css: Emotoin.CSSObject = {
+    const css: Emotion.CSSObject = {
       ...defaultCSS,
       ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
       ...(center && {

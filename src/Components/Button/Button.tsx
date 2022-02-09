@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import Emotion from '@emotion/react';
 import { ButtonHTMLAttributes } from 'react';
 
 import { TextColors } from 'Styles/Theme';
@@ -7,7 +7,7 @@ export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   fit?: boolean;
 };
 
-const css: Emotoin.CSSObject = {
+const css: Emotion.CSSObject = {
   backgroundColor: 'unset',
   border: 'none',
   outline: 'none',

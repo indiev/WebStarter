@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import Emotion from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import { Text } from 'Components/Text';
 import { FlexView } from 'Components/View';
 import { Colors } from 'Styles/Theme';
 
-const css: Emotoin.CSSObject = {
+const css: Emotion.CSSObject = {
   // position: 'fixed',
   width: '100%',
   height: '3rem',
