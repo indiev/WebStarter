@@ -1,17 +1,8 @@
 import Emotoin from '@emotion/react';
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Box
-} from '@material-ui/core';
-import {
-  AccountCircle as AccountCircleIcon,
-  Favorite as FavoriteIcon,
-  Restore as RestoreIcon
-} from '@material-ui/icons';
 import { ChangeEvent, useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
+import { FlexView } from 'Components';
 import View from 'Components/View/View';
 import { Colors } from 'Styles/Theme';
 
@@ -36,31 +27,13 @@ const Navigation = () => {
     history.push(`/${newValue}`);
   };
 
-  return (
-    <Box position="fixed" style={{ bottom: 0, width: '100%' }}>
-      <BottomNavigation value={value} showLabels onChange={handleChange}>
-        <BottomNavigationAction
-          icon={<RestoreIcon />}
-          label="Posts"
-          value="posts"
-        />
-        <BottomNavigationAction
-          icon={<FavoriteIcon />}
-          label="Favorites"
-          value="favorites"
-        />
-        <BottomNavigationAction
-          icon={<AccountCircleIcon />}
-          label="Me"
-          value="me"
-        />
-      </BottomNavigation>
-    </Box>
-  );
+  return <FlexView>test</FlexView>;
 };
 
 export default () => (
   <Switch>
-    <Route component={Navigation} />
+    <Route>
+      <Navigation />
+    </Route>
   </Switch>
 );

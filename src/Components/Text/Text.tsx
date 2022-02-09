@@ -26,9 +26,11 @@ export type Props = (
   xxxLarge?: boolean;
   light?: boolean;
   medium?: boolean;
+  semiBold?: boolean;
   bold?: boolean;
   black?: boolean;
   monospace?: boolean;
+  color?: string;
 };
 
 const SizeStyle: { [key: string]: Emotion.CSSObject } = {
@@ -86,13 +88,15 @@ export default ({
   xxxLarge,
   light,
   medium,
+  semiBold,
   bold,
   black,
   monospace,
+  color,
   ...props
 }: Props) => {
   const css: Emotion.CSSObject = {
-    color: TextColors.text,
+    color: color || TextColors.text,
     ...SizeStyle[
       size ||
         (xxSmall && 'xx-small') ||
@@ -108,6 +112,7 @@ export default ({
       weight ||
         (light && 'light') ||
         (medium && 'medium') ||
+        (semiBold && 'semiBold') ||
         (bold && 'bold') ||
         (black && 'black') ||
         'regular'

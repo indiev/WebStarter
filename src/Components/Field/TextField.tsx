@@ -1,4 +1,4 @@
-import Emotion from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { forwardRef, useState } from 'react';
 
 import Input, { Props as InputProps } from './Input';
@@ -32,7 +32,7 @@ export default forwardRef<HTMLInputElement, Props>(
     const { placeholder } = props;
     const [value, setValue] = useState('');
     const [focus, setFocus] = useState(false);
-    const wrapperCSS: Emotion.CSSObject = {
+    const wrapperCSS: CSSObject = {
       // borderBottom: `1px solid var(--gray)}`,
       // ...(error && { borderBottom: `1px solid var(--danger) !important` }),
       // '> :focus': {
@@ -42,7 +42,7 @@ export default forwardRef<HTMLInputElement, Props>(
       position: 'relative'
     };
 
-    const labelCSS: Emotion.CSSObject = {
+    const labelCSS: CSSObject = {
       top: 0,
       left: 0,
       position: 'absolute',
@@ -59,7 +59,7 @@ export default forwardRef<HTMLInputElement, Props>(
         'color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms'
     };
 
-    const inputWrapper: Emotion.CSSObject = {
+    const inputWrapper: CSSObject = {
       color: '#fff',
       cursor: 'text',
       display: 'inline-flex',
@@ -77,11 +77,11 @@ export default forwardRef<HTMLInputElement, Props>(
         position: 'absolute',
         transition:
           'border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.7)',
+        borderBottom: '1px solid rgba(52, 58, 64, 0.7)',
         pointerEvents: 'none'
       },
       ':hover:before': {
-        borderBottom: '2px solid #fff'
+        borderBottom: '2px solid var(--gray-dark)'
       },
       ':after': {
         left: 0,
@@ -97,7 +97,7 @@ export default forwardRef<HTMLInputElement, Props>(
       }
     };
 
-    const inputCSS: Emotion.CSSObject = {
+    const inputCSS: CSSObject = {
       // paddingBottom: '0.5vw',
       margin: '17px 0 7px',
       height: '1.1875em'

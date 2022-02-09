@@ -19,6 +19,7 @@ export type Props = ViewProps & {
   shrink?: number;
   wrap?: boolean;
   center?: boolean;
+  grid?: boolean;
 };
 
 const justifyContents = {
@@ -38,15 +39,26 @@ const alignItems = {
   stretch: 'stretch'
 };
 
-const defaultCSS: Emotoin.CSSObject = {
-  display: 'flex'
-};
-
 export default forwardRef<HTMLDivElement, Props>(
   (
-    { row, content, items, fill, grow, shrink, wrap, center, ...props }: Props,
+    {
+      row,
+      content,
+      items,
+      fill,
+      grow,
+      shrink,
+      wrap,
+      center,
+      grid,
+      ...props
+    }: Props,
     ref
   ) => {
+    const defaultCSS: Emotoin.CSSObject = {
+      display: !grid ? 'flex' : 'grid'
+    };
+
     const css: Emotoin.CSSObject = {
       ...defaultCSS,
       ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),

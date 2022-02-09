@@ -1,4 +1,4 @@
-
+import { Fragment } from 'react';
 
 import Button from './Button';
 import IconButton from './IconButton';
@@ -12,7 +12,7 @@ export default {
 
 export const Buttons = () => (
   <FlexView>
-    <FlexView css={{ 'button:nth-child(n)': { padding: 10, margin: 5 } }}>
+    <FlexView css={{ 'button:nth-of-type(n)': { padding: 10, margin: 5 } }}>
       <Button css={{ backgroundColor: Colors.primary }}>Primay</Button>
       <Button css={{ backgroundColor: Colors.secondary }}>Secondary</Button>
       <Button css={{ backgroundColor: Colors.success }}>Success</Button>
@@ -24,7 +24,7 @@ export const Buttons = () => (
       </Button>
       <Button css={{ backgroundColor: Colors.dark }}>Dark</Button>
     </FlexView>
-    <FlexView css={{ 'button:nth-child(n)': { padding: 10, margin: 5 } }} row>
+    <FlexView css={{ 'button:nth-of-type(n)': { padding: 10, margin: 5 } }} row>
       <Button css={{ backgroundColor: Colors.primary }} fit>
         Primay
       </Button>
@@ -54,8 +54,8 @@ export const Buttons = () => (
 );
 
 export const IconButtons = () => (
-  <>
+  <Fragment>
     <IconButton name="logo" />
     <IconButton name="close" />
-  </>
+  </Fragment>
 );

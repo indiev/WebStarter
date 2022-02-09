@@ -9,11 +9,11 @@ import { FlexView } from 'Components/View';
 import { Colors } from 'Styles/Theme';
 
 const css: Emotoin.CSSObject = {
-  position: 'fixed',
+  // position: 'fixed',
   width: '100%',
   height: '3rem',
   padding: '0 1rem',
-  backgroundColor: 'var(--gray-dark)',
+  backgroundColor: 'var(--gray)',
   top: 0
 };
 
@@ -52,6 +52,8 @@ const Navbar = () => {
 
 export default () => (
   <Switch>
-    <Route component={Navbar} />
+    <Route>
+      <Navbar />
+    </Route>
   </Switch>
 );
