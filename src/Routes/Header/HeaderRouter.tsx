@@ -1,6 +1,6 @@
 import { CSSObject } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { Icon } from 'Components/Icon';
 import { Link, NavLink } from 'Components/Link';
@@ -54,9 +54,9 @@ const Navbar = () => {
 };
 
 export default () => (
-  <Switch>
+  <Routes>
     <Route>
       <Navbar />
     </Route>
-  </Switch>
+  </Routes>
 );
