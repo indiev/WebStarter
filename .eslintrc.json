@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["airbnb", "react-app", "react-app/jest", "plugin:react/jsx-runtime", "prettier"],
+  "extends": ["airbnb", "react-app", "plugin:storybook/recommended", "react-app/jest", "plugin:react/jsx-runtime", "prettier"],
   "plugins": ["prettier", "@emotion"],
   "rules": {
     "@emotion/no-vanilla": "error",
