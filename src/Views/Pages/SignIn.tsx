@@ -28,11 +28,11 @@ export default () => {
   };
 
   return (
-    <Container>
+    <FlexView css={{ width: '100%' }} items="center">
       <Text medium xLarge>
         {t('title')}
       </Text>
-      <FlexView css={{ padding: 15, width: 300 }}>
+      <FlexView css={{ padding: '0 16px', width: 360 }}>
         <Form onSubmit={handleSubmit(onSumbit)}>
           <View>
             <TextField
@@ -60,7 +60,7 @@ export default () => {
               }}
               type="submit"
             >
-              <Text large medium>
+              <Text color="white" large medium>
                 {t('submitButton')}
               </Text>
             </Button>
@@ -68,6 +68,6 @@ export default () => {
         </Form>
       </FlexView>
       <OutlinedTextField label="테스트" />
-    </Container>
+    </FlexView>
   );
 };

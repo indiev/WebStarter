@@ -15,7 +15,7 @@ export const Header = (props: Props) => (
 );
 
 export const Main = (props: Props) => (
-  <main {...props}>
+  <main {...props} style={{ height: `calc(100vh - 6rem)` }}>
     <MainRouter />
   </main>
 );

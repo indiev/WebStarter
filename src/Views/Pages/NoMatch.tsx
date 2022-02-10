@@ -4,6 +4,6 @@ import Container from 'Components/View/Container';
 
 export default () => (
   <Container css={{ textAlign: 'center', height: '80vh' }}>
-    <Text css={{ margin: 'auto' }}>Not Found Page</Text>
+    <Text css={{ margin: 'auto' }}>Page Not Found</Text>
   </Container>
 );

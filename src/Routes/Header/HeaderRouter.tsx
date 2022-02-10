@@ -15,6 +15,8 @@ const css: CSSObject = {
   padding: '0 1rem',
   // backgroundColor: 'var(--gray)',
   backgroundColor: Colors.primary,
+  boxShadow: '0 0 4px rgba(0, 0, 0, 0.5)',
+  zIndex: 1000,
   top: 0
 };
 
