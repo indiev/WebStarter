@@ -24,8 +24,8 @@ export default {
     title: 'Sign Down'
   },
   signIn: {
-    title: 'Sign In',
-    submitButton: 'Sign In'
+    title: '로그인',
+    submitButton: '로그인'
   },
   signOut: {
     title: 'Sign Out'

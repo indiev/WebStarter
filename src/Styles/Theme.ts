@@ -1,4 +1,4 @@
-import Emotion from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 
 import { toGetVariables, toVariables } from 'Utils/styles';
 
@@ -86,7 +86,7 @@ const StyleTextColors = {
 
 export const TextColors = toGetVariables(StyleTextColors);
 
-const styleVariables: Emotion.CSSObject = {
+const styleVariables: CSSObject = {
   ...toVariables(StyleColors),
   ...toVariables(StyleTextColors),
   ...toVariables(StyleSizes, 'breakpoint', 'px'),
@@ -96,7 +96,7 @@ const styleVariables: Emotion.CSSObject = {
   '--font-family-monospace': `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 };
 
-const html: Emotion.CSSObject = {
+const html: CSSObject = {
   fontFamily: 'var(--font-family-sans-serif)',
   fontSize: 'var(--font-default-size)',
   fontWeight: 'normal',
@@ -108,7 +108,7 @@ const html: Emotion.CSSObject = {
   backgroundColor: Colors.white
 };
 
-const body: Emotion.CSSObject = {
+const body: CSSObject = {
   margin: 0, // Remove the margin in all browsers.
   color: TextColors.text,
   fill: TextColors.fill,
@@ -122,7 +122,7 @@ const body: Emotion.CSSObject = {
   }
 };
 
-const etc: Emotion.CSSObject = {
+const etc: CSSObject = {
   a: {
     textDecoration: 'none',
     color: 'unset'
@@ -132,7 +132,7 @@ const etc: Emotion.CSSObject = {
   }
 };
 
-const global: Emotion.CSSObject = {
+const global: CSSObject = {
   html,
   '*, *::before, *::after': {
     boxSizing: 'inherit'
@@ -141,7 +141,7 @@ const global: Emotion.CSSObject = {
   ...etc
 };
 
-export const rootStyles: Emotion.CSSObject = {
+export const rootStyles: CSSObject = {
   ':root': styleVariables,
   ...global
 };

@@ -1,4 +1,4 @@
-import Emotion from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { forwardRef } from 'react';
 
 import View, { Props as ViewProps } from './View';
@@ -20,6 +20,7 @@ export type Props = ViewProps & {
   wrap?: boolean;
   center?: boolean;
   grid?: boolean;
+  gap?: number;
 };
 
 const justifyContents = {
@@ -51,15 +52,16 @@ export default forwardRef<HTMLDivElement, Props>(
       wrap,
       center,
       grid,
+      gap,
       ...props
     }: Props,
     ref
   ) => {
-    const defaultCSS: Emotion.CSSObject = {
+    const defaultCSS: CSSObject = {
       display: !grid ? 'flex' : 'grid'
     };
 
-    const css: Emotion.CSSObject = {
+    const css: CSSObject = {
       ...defaultCSS,
       ...((row && { flexDirection: 'row' }) || { flexDirection: 'column' }),
       ...(center && {
@@ -71,7 +73,8 @@ export default forwardRef<HTMLDivElement, Props>(
       ...(fill && { flex: 1 }),
       ...(grow && { flexGrow: grow }),
       ...(shrink && { flexShrink: shrink }),
-      ...(wrap && { flexWrap: 'wrap' })
+      ...(wrap && { flexWrap: 'wrap' }),
+      ...(gap && { gap: `${gap}px` })
     };
 
     return <View ref={ref} css={css} {...props} />;

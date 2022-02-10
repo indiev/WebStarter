@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
+import OutlinedTextField from '../../Components/Field/OutlinedTextField';
+
 import Button from 'Components/Button/Button';
 import TextField from 'Components/Field/TextField';
 import Form from 'Components/Form/Form';
@@ -20,15 +22,17 @@ export default () => {
   const { register, handleSubmit } = useForm<FormData>({ mode: 'onChange' });
 
   const onSumbit = (data: FormData) => {
+    /* eslint-disable no-console */
     console.log(data);
+    /* eslint-disable no-console */
   };
 
   return (
-    <Container>
+    <FlexView css={{ width: '100%' }} items="center">
       <Text medium xLarge>
         {t('title')}
       </Text>
-      <FlexView css={{ padding: 15, width: 300 }}>
+      <FlexView css={{ padding: '0 16px', width: 360 }}>
         <Form onSubmit={handleSubmit(onSumbit)}>
           <View>
             <TextField
@@ -41,7 +45,7 @@ export default () => {
           <View css={{ marginTop: 5 }}>
             <TextField
               ref={register({ required: true })}
-              autoComplete="new-password"
+              autoComplete="password"
               name="password"
               type="password"
               label
@@ -56,13 +60,14 @@ export default () => {
               }}
               type="submit"
             >
-              <Text large medium>
-                {t('confirmButton')}
+              <Text color="white" large medium>
+                {t('submitButton')}
               </Text>
             </Button>
           </FlexView>
         </Form>
       </FlexView>
-    </Container>
+      <OutlinedTextField label="테스트" />
+    </FlexView>
   );
 };

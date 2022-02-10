@@ -1,4 +1,4 @@
-import * as Emotion from '@emotion/react';
+import { CSSObject, jsx } from '@emotion/react';
 import { HTMLAttributes, LabelHTMLAttributes } from 'react';
 
 import { FontSizes, TextColors } from 'Styles/Theme';
@@ -33,7 +33,7 @@ export type Props = (
   color?: string;
 };
 
-const SizeStyle: { [key: string]: Emotion.CSSObject } = {
+const SizeStyle: { [key: string]: CSSObject } = {
   'xx-small': { fontSize: FontSizes.xxSmall },
   'x-small': { fontSize: FontSizes.xSmall },
   small: { fontSize: FontSizes.small },
@@ -45,7 +45,7 @@ const SizeStyle: { [key: string]: Emotion.CSSObject } = {
 };
 
 // light, regular, bold
-const WeightStyle: { [key: string]: Emotion.CSSObject } = {
+const WeightStyle: { [key: string]: CSSObject } = {
   thin: {
     fontWeight: 100
   },
@@ -95,7 +95,7 @@ export default ({
   color,
   ...props
 }: Props) => {
-  const css: Emotion.CSSObject = {
+  const css: CSSObject = {
     color: color || TextColors.text,
     ...SizeStyle[
       size ||
@@ -120,5 +120,5 @@ export default ({
     ...(monospace && { fontFamily: 'var(--font-family-monospace)' })
   };
 
-  return Emotion.jsx(component, { css, ...props });
+  return jsx(component, { css, ...props });
 };

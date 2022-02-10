@@ -1,4 +1,4 @@
-import Emotion from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 
@@ -8,12 +8,15 @@ import { Text } from 'Components/Text';
 import { FlexView } from 'Components/View';
 import { Colors } from 'Styles/Theme';
 
-const css: Emotion.CSSObject = {
+const css: CSSObject = {
   // position: 'fixed',
   width: '100%',
   height: '3rem',
   padding: '0 1rem',
-  backgroundColor: 'var(--gray)',
+  // backgroundColor: 'var(--gray)',
+  backgroundColor: Colors.primary,
+  boxShadow: '0 0 4px rgba(0, 0, 0, 0.5)',
+  zIndex: 1000,
   top: 0
 };
 
@@ -38,12 +41,12 @@ const Navbar = () => {
   return (
     <FlexView content="between" css={css} items="center" row>
       <Logo />
-      <FlexView content="end" row>
+      <FlexView content="end" gap={8} row>
         <NavLink css={{ padding: '0 5px' }} to="/signup">
-          <Text medium>{t('signUp')}</Text>
+          <Text medium>어쩌구</Text>
         </NavLink>
         <NavLink css={{ padding: '0 5px' }} to="/signin">
-          <Text medium>{t('signIn')}</Text>
+          <Text medium>헤더라우터에있어용</Text>
         </NavLink>
       </FlexView>
     </FlexView>

@@ -1,8 +1,9 @@
-import P from 'Components/Text/Paragraph';
+import { Text } from '../../Components';
+
 import Container from 'Components/View/Container';
 
 export default () => (
-  <Container>
-    <P>Not Found Page</P>
+  <Container css={{ textAlign: 'center', height: '80vh' }}>
+    <Text css={{ margin: 'auto' }}>Page Not Found</Text>
   </Container>
 );
