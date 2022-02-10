@@ -27,7 +27,7 @@ const Navigation = () => {
     history.push(`/${newValue}`);
   };
 
-  return <FlexView>test</FlexView>;
+  return <FlexView>푸터</FlexView>;
 };
 
 export default () => (
