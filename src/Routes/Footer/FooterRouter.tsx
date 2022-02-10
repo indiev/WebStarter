@@ -1,6 +1,6 @@
 import { CSSObject } from '@emotion/react';
 import { ChangeEvent, useState } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { FlexView } from 'Components';
 import View from 'Components/View/View';
@@ -20,21 +20,21 @@ const css: CSSObject = {
 const Navbar = () => <View css={css}>Footer</View>;
 const Navigation = () => {
   const [value, setValue] = useState('posts');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleChange = (event: ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
-    history.push(`/${newValue}`);
+    navigate(`/${newValue}`);
   };
 
   return <FlexView>Footer</FlexView>;
 };
 
 export default () => (
-  <Switch>
+  <Routes>
     <Route>
       {/* {Navbar} */}
       <Navigation />
     </Route>
-  </Switch>
+  </Routes>
 );
