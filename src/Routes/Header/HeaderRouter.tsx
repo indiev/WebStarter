@@ -41,10 +41,10 @@ const Navbar = () => {
       <Logo />
       <FlexView content="end" gap={8} row>
         <NavLink css={{ padding: '0 5px' }} to="/signup">
-          <Text medium>{t('signUp')}</Text>
+          <Text medium>어쩌구</Text>
         </NavLink>
         <NavLink css={{ padding: '0 5px' }} to="/signin">
-          <Text medium>{t('signIn')}</Text>
+          <Text medium>헤더라우터에있어용</Text>
         </NavLink>
       </FlexView>
     </FlexView>
