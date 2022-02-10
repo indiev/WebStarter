@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
+import OutlinedTextField from '../../Components/Field/OutlinedTextField';
+
 import Button from 'Components/Button/Button';
 import TextField from 'Components/Field/TextField';
 import Form from 'Components/Form/Form';
@@ -20,7 +22,9 @@ export default () => {
   const { register, handleSubmit } = useForm<FormData>({ mode: 'onChange' });
 
   const onSumbit = (data: FormData) => {
+    /* eslint-disable no-console */
     console.log(data);
+    /* eslint-disable no-console */
   };
 
   return (
@@ -41,7 +45,7 @@ export default () => {
           <View css={{ marginTop: 5 }}>
             <TextField
               ref={register({ required: true })}
-              autoComplete="new-password"
+              autoComplete="password"
               name="password"
               type="password"
               label
@@ -57,12 +61,13 @@ export default () => {
               type="submit"
             >
               <Text large medium>
-                {t('confirmButton')}
+                {t('submitButton')}
               </Text>
             </Button>
           </FlexView>
         </Form>
       </FlexView>
+      <OutlinedTextField label="테스트" />
     </Container>
   );
 };

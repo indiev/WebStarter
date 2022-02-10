@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { ChangeEvent, useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import { FlexView } from 'Components';
 import View from 'Components/View/View';
 import { Colors } from 'Styles/Theme';
 
-const css: Emotoin.CSSObject = {
+const css: CSSObject = {
   position: 'fixed',
   display: 'flex',
   width: '100%',
@@ -27,12 +27,13 @@ const Navigation = () => {
     history.push(`/${newValue}`);
   };
 
-  return <FlexView>test</FlexView>;
+  return <FlexView>Footer</FlexView>;
 };
 
 export default () => (
   <Switch>
     <Route>
+      {/* {Navbar} */}
       <Navigation />
     </Route>
   </Switch>

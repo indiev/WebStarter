@@ -60,7 +60,7 @@ export default forwardRef<HTMLInputElement, Props>(
     };
 
     const inputWrapper: CSSObject = {
-      color: '#fff',
+      // color: '#fff',
       cursor: 'text',
       display: 'inline-flex',
       position: 'relative',

@@ -20,7 +20,9 @@ export default () => {
   const { register, handleSubmit } = useForm<FormData>({ mode: 'onChange' });
 
   const onSumbit = (data: FormData) => {
+    /* eslint-disable no-console */
     console.log(data);
+    /* eslint-disable no-console */
   };
 
   return (
@@ -57,7 +59,7 @@ export default () => {
               type="submit"
             >
               <Text large medium>
-                Sign Up
+                {t('submitButton')}
               </Text>
             </Button>
           </FlexView>

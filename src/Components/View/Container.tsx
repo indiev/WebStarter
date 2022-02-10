@@ -1,10 +1,10 @@
-import Emotoin from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 
 import FlexView, { Props as FlexViewProps } from './FlexView';
 
 export type Props = FlexViewProps;
 
-const css: Emotoin.CSSObject = {
+const css: CSSObject = {
   // minHeight: '100vh'
 };
 

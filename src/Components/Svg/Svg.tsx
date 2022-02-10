@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { SVGProps } from 'react';
 
 type Props = SVGProps<SVGSVGElement>;
@@ -6,7 +6,7 @@ export type SvgProps = Props;
 
 const DEAFAULT_VIEW_BOX_SIZE = 24;
 
-const css: Emotoin.CSSObject = {
+const css: CSSObject = {
   width: 'auto',
   height: '100%'
 };

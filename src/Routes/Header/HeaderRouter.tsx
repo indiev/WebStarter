@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 
@@ -8,12 +8,13 @@ import { Text } from 'Components/Text';
 import { FlexView } from 'Components/View';
 import { Colors } from 'Styles/Theme';
 
-const css: Emotoin.CSSObject = {
+const css: CSSObject = {
   // position: 'fixed',
   width: '100%',
   height: '3rem',
   padding: '0 1rem',
-  backgroundColor: 'var(--gray)',
+  // backgroundColor: 'var(--gray)',
+  backgroundColor: Colors.primary,
   top: 0
 };
 
@@ -38,7 +39,7 @@ const Navbar = () => {
   return (
     <FlexView content="between" css={css} items="center" row>
       <Logo />
-      <FlexView content="end" row>
+      <FlexView content="end" gap={8} row>
         <NavLink css={{ padding: '0 5px' }} to="/signup">
           <Text medium>{t('signUp')}</Text>
         </NavLink>

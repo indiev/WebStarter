@@ -1,11 +1,11 @@
-import Emotion from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { forwardRef, InputHTMLAttributes } from 'react';
 
 import { FontSizes, TextColors } from 'Styles/Theme';
 
 export type Props = InputHTMLAttributes<HTMLInputElement>;
 
-const css: Emotion.CSSObject = {
+const css: CSSObject = {
   border: 'none',
   outline: 'none',
   background: 'none',

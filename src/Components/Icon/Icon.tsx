@@ -1,4 +1,4 @@
-import Emotoin from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import * as Icons from 'Assets/Images/Icons';
@@ -13,13 +13,13 @@ export type Props = DetailedHTMLProps<
   size?: number;
 };
 
-const defaultCSS: Emotoin.CSSObject = {
+const defaultCSS: CSSObject = {
   display: 'inline-flex'
 };
 
 export default ({ name, color, size, ...props }: Props) => {
   const RenderIcon = Icons[name as keyof typeof Icons];
-  const css: Emotoin.CSSObject = {
+  const css: CSSObject = {
     ...defaultCSS,
     height: size || 24,
     fill: color || TextColors.text
